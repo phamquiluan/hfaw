@@ -28,11 +28,11 @@ This repository includes artifacts for reuse and reproduction of experimental re
 
 ## Prerequisites
 
-We recommend using machines equipped with at least 8 cores, 16GB RAM, and ~30GB available disk space with Ubuntu 22.04 or Ubuntu 20.04, and Python3.10 installed to stably reproduce the experimental results in our paper.
+We recommend using machines equipped with at least 8 cores, 16GB RAM, and ~30GB available disk space with Ubuntu 22.04 or Ubuntu 20.04, and Python3.10 or above.
 
 ## Installation
 
-The `default` environment, which is used for most methods, can be easily installed as follows. We require Ubuntu and Python 3.10 to reproduce our results stably. Detailed installation instructions for all methods are in [SETUP.md](SETUP.md).
+The `default` environment, which is used for most methods, can be easily installed as follows. Detailed installation instructions for all methods are in [SETUP.md](SETUP.md).
 
 
 Open your terminal and run the following commands
@@ -98,9 +98,7 @@ tests/test.py .                                                            [100%
 
 ### Data format
 
-The data must be a `pandas.DataFrame` that consists of multivariate time series metrics data. We require the data to have a column named `time` that stores the timestep. Each other column stores a time series for metrics data with the name format of `<service>_<metric>`. For example, the column `cart_cpu` stores the CPU utilization of service `cart`. A sample of valid data could be downloaded using the `download_data()` method that we will demonstrate shortly below.
-
-
+The telemetry data must be presented as `pandas.DataFrame`. We require the data to have a column named `time` that stores the timestep. A sample of valid data could be downloaded using the `download_data()` method that we will demonstrate shortly below.
 
 ### Basic usage example
 
