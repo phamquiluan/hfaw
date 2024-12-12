@@ -16,7 +16,6 @@ This repository includes artifacts for reuse and reproduction of experimental re
     - [Data format](#data-format)
     - [Basic usage example](#basic-usage-example)
   - [Reproducibility](#reproducibility)
-    - [Reproduce RQ1 - Causal Discovery Performance](#reproduce-rq1---causal-discovery-performance)
     - [Reproduce RQ2 - Root Cause Analysis Performance](#reproduce-rq2---root-cause-analysis-performance)
     - [Reproduce RQ3 - Efficiency](#reproduce-rq3---efficiency)
     - [Reproduce RQ4 - Data lengths](#reproduce-rq4---data-lengths)
@@ -135,44 +134,6 @@ Top 5 root causes: ['emailservice_mem', 'recommendationservice_mem', 'cartservic
 
 
 ## Reproducibility
-
-### Reproduce RQ1 - Causal Discovery Performance
-
-We provide a script named `rq1.py` to assist in reproducing the RQ1 results from our paper. This script can be executed using Python with the following syntax: 
-
-```
-python rq1.py [-h] [--dataset DATASET] [--method METHOD] [--length LENGTH] [--test]
-```
-
-The available options and their descriptions are as follows:
-
-```
-options:
-  -h, --help            Show this help message and exit
-  --dataset DATASET     Choose a dataset. Valid options:
-                        [circa10, circa50, rcd10, rcd50, causil10, causil50]
-  --method METHOD       Choose a method (e.g. `pc`, `fci`, `granger`, `ICALiNGAM`, `DirectLiNGAM`, `ges`, `fges`, `pcmci`, `ntlr`.)
-  --length LENGTH       Specify the length of the time series (used for RQ4)
-  --test                Perform smoke test on certain methods without fully run
-```
-
-For example, in Table 3, PC achieves F1, F1-S, and SHD scores of 0.49, 0.65, and 16 on the CIRCA 10 dataset. To reproduce these results, you can run the following commands:
-
-```bash
-python rq1.py --dataset circa10 --method pc
-```
-
-The expected output should be exactly as presented in the paper (it takes less than 1 minute to run the code)
-
-```
-F1:   0.49
-F1-S: 0.65
-SHD:  16
-Avg speed: 0.08
-```
-
-We can replace the pc method with other methods (e.g., fci, granger) and substitute circa10 with other datasets to replicate the corresponding results shown in Table 3. This reproduction process is also integrated into our Continuous Integration (CI) setup. For more details, refer to the [.github/workflows/reproduce-rq1.yml](.github/workflows/reproduce-rq1.yml) file.
-
 
 ### Reproduce RQ2 - Root Cause Analysis Performance
 
