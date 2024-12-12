@@ -1,4 +1,4 @@
-# 🕵️ Root Cause Analysis for Microservices based on Causal Inference: How Far Are We?
+# 🕵️ RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems
 
 [![DOI](https://zenodo.org/badge/840137303.svg)](https://zenodo.org/doi/10.5281/zenodo.13294048)
 [![pypi package](https://img.shields.io/pypi/v/RCAEval.svg)](https://pypi.org/project/RCAEval)
@@ -6,22 +6,25 @@
 [![Build and test](https://github.com/phamquiluan/RCAEval/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/phamquiluan/RCAEval/actions/workflows/build-and-test.yml)
 [![Upload Python Package](https://github.com/phamquiluan/RCAEval/actions/workflows/python-publish.yml/badge.svg)](https://github.com/phamquiluan/RCAEval/actions/workflows/python-publish.yml)
 
-This repository includes artifacts for reuse and reproduction of experimental results presented in our ASE'24 paper titled "Root Cause Analysis for Microservices based on Causal Inference: How Far Are We?".
+This repository includes artifacts for reuse and reproduction of experimental results presented in our ASE'24 paper titled "Root Cause Analysis for Microservices based on Causal Inference: How Far Are We?". Please refer to [legacy/README-ASE.md](legacy/README-ASE.md) for more information.
 
 **Table of Contents** 
-  * [Installation](#installation)
-  * [How-to-use](#how-to-use)
-    + [Data format](#data-format)
-    + [Basic usage example](#basic-usage-example)
-  * [Reproducibility](#reproducibility)
-    + [Reproduce RQ1 - Causal Discovery Performance](#reproduce-rq1---causal-discovery-performance)
-    + [Reproduce RQ2 - Root Cause Analysis Performance](#reproduce-rq2---root-cause-analysis-performance)
-    + [Reproduce RQ3 - Efficiency](#reproduce-rq3---efficiency)
-    + [Reproduce RQ4 - Data lengths](#reproduce-rq4---data-lengths)
-  * [Download Datasets](#download-datasets)
-  * [Download Paper and Supplementary Material](#download-paper-and-supplementary-material)
-  * [Licensing](#licensing)
-  * [Acknowledgments](#acknowledgments)
+- [🕵️ RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems](#️-rcaeval-a-benchmark-for-root-cause-analysis-of-microservice-systems)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [How-to-use](#how-to-use)
+    - [Data format](#data-format)
+    - [Basic usage example](#basic-usage-example)
+  - [Reproducibility](#reproducibility)
+    - [Reproduce RQ1 - Causal Discovery Performance](#reproduce-rq1---causal-discovery-performance)
+    - [Reproduce RQ2 - Root Cause Analysis Performance](#reproduce-rq2---root-cause-analysis-performance)
+    - [Reproduce RQ3 - Efficiency](#reproduce-rq3---efficiency)
+    - [Reproduce RQ4 - Data lengths](#reproduce-rq4---data-lengths)
+  - [Download Datasets](#download-datasets)
+  - [Download Paper and Supplementary Material](#download-paper-and-supplementary-material)
+  - [Licensing](#licensing)
+  - [Acknowledgments](#acknowledgments)
+  - [Contact](#contact)
 
 ## Prerequisites
 
