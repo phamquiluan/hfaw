@@ -8,7 +8,6 @@
 
 RCAEval is an open-source benchmark that provides datasets and an evaluation environment for RCA in microservice systems.
 
-_NOTE_: The prior version of RCAEval used in our ASE'24 paper are available in the [ase24 branch](https://github.com/phamquiluan/RCAEval/tree/ase24).
 
 **Table of Contents** 
 - [🕵️ RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems](#️-rcaeval-a-benchmark-for-root-cause-analysis-of-microservice-systems)
@@ -406,6 +405,8 @@ This repository includes code from various sources with different licenses. We h
 
 We would like to express our sincere gratitude to the researchers and developers who created the baselines used in our study. Their work has been instrumental in making this project possible. We deeply appreciate the time, effort, and expertise that have gone into developing and maintaining these resources. This project would not have been feasible without their contributions.
 
+## Change Logs
+- [Dec 2024] The prior version of RCAEval used in our ASE'24 paper are available in the [ase24 branch](https://github.com/phamquiluan/RCAEval/tree/ase24).
 
 ## Contact
 
