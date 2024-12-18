@@ -199,6 +199,8 @@ We can replace the baro method with other methods (e.g., nsigma, fci_randomwalk)
 
 ## Download Datasets
 
+RCAEval benchmark includes three datasets: RE1, RE2, and RE3, designed to comprehensively support benchmarking RCA in microservice systems. Together, our three datasets feature 735 failure cases collected from three microservice systems (Online Boutique, Sock Shop, and Train Ticket) and including 11 fault types. Each failure case also includes annotated root cause service and root cause indicator (e.g., specific metric or log indicating the root cause). The statistics of the datasets are presented in the Table below.
+
 |   Dataset   |   Systems  |   Fault Types            |   Cases  |   Metrics  |   Logs (millions)  |   Traces (millions)  |
 |-------------|------------|--------------------------|----------|------------|--------------------|----------------------|
 |   RE1 [14]  |   3        |   3 Resource, 2 Network  |   375    |   49-212   |   N/A              |   N/A                |
