@@ -1,4 +1,4 @@
-<img width="461" alt="image" src="https://github.com/user-attachments/assets/ae3c4def-8b8e-49eb-b4fb-7a6bb0c9cfce" /># 🕵️ RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems
+# 🕵️ RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems
 
 [![DOI](https://zenodo.org/badge/840137303.svg)](https://zenodo.org/doi/10.5281/zenodo.13294048)
 [![pypi package](https://img.shields.io/pypi/v/RCAEval.svg)](https://pypi.org/project/RCAEval)
