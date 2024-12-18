@@ -1,4 +1,4 @@
-# 🕵️ RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems
+<img width="461" alt="image" src="https://github.com/user-attachments/assets/ae3c4def-8b8e-49eb-b4fb-7a6bb0c9cfce" /># 🕵️ RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems
 
 [![DOI](https://zenodo.org/badge/840137303.svg)](https://zenodo.org/doi/10.5281/zenodo.13294048)
 [![pypi package](https://img.shields.io/pypi/v/RCAEval.svg)](https://pypi.org/project/RCAEval)
@@ -198,6 +198,12 @@ We can replace the baro method with other methods (e.g., nsigma, fci_randomwalk)
 
 
 ## Download Datasets
+
+|   Dataset   |   Systems  |   Fault Types            |   Cases  |   Metrics  |   Logs (millions)  |   Traces (millions)  |
+|-------------|------------|--------------------------|----------|------------|--------------------|----------------------|
+|   RE1 [14]  |   3        |   3 Resource, 2 Network  |   375    |   49-212   |   N/A              |   N/A                |
+|   RE2       |   3        |   4 Resource, 2 Network  |   270    |   77-376   |   8.6-26.9         |   39.6-76.7          |
+|   RE3       |   3        |   5 Code-level           |   90     |   68-322   |   1.7-2.7          |   4.5-4.7            |
 
 Our datasets and their description are publicly available in Zenodo repository with the following information:
 - Dataset DOI: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13305663.svg)](https://doi.org/10.5281/zenodo.13305663)
