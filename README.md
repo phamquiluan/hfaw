@@ -6,7 +6,7 @@
 [![Build and test](https://github.com/phamquiluan/RCAEval/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/phamquiluan/RCAEval/actions/workflows/build-and-test.yml)
 [![Upload Python Package](https://github.com/phamquiluan/RCAEval/actions/workflows/python-publish.yml/badge.svg)](https://github.com/phamquiluan/RCAEval/actions/workflows/python-publish.yml)
 
-RCAEval is an open-source benchmark that provides datasets and an evaluation environment for RCA in microservice systems.
+RCAEval is an open-source benchmark that provides datasets and an evaluation framework for RCA in microservice systems.
 
 
 **Table of Contents** 
