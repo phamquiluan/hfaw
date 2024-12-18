@@ -6,7 +6,9 @@
 [![Build and test](https://github.com/phamquiluan/RCAEval/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/phamquiluan/RCAEval/actions/workflows/build-and-test.yml)
 [![Upload Python Package](https://github.com/phamquiluan/RCAEval/actions/workflows/python-publish.yml/badge.svg)](https://github.com/phamquiluan/RCAEval/actions/workflows/python-publish.yml)
 
-RCAEval is an open-source benchmark that provides datasets and an evaluation environment for RCA in microservice systems. This repository includes artifacts for reuse and reproduction of experimental results presented in our ASE'24 paper titled "Root Cause Analysis for Microservices based on Causal Inference: How Far Are We?". Please refer to [legacy/README-ASE.md](legacy/README-ASE.md) for more information.
+RCAEval is an open-source benchmark that provides datasets and an evaluation environment for RCA in microservice systems.
+
+_NOTE_: The prior version of RCAEval used in our ASE'24 paper are available in the [ase24 branch](https://github.com/phamquiluan/RCAEval/tree/ase24).
 
 **Table of Contents** 
 - [🕵️ RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems](#️-rcaeval-a-benchmark-for-root-cause-analysis-of-microservice-systems)
