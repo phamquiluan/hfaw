@@ -18,8 +18,6 @@ RCAEval is an open-source benchmark that provides three comprehensive datasets (
     - [Basic usage example](#basic-usage-example)
   - [Reproducibility](#reproducibility)
     - [Reproduce RQ2 - Root Cause Analysis Performance](#reproduce-rq2---root-cause-analysis-performance)
-    - [Reproduce RQ3 - Efficiency](#reproduce-rq3---efficiency)
-    - [Reproduce RQ4 - Data lengths](#reproduce-rq4---data-lengths)
   - [Download Datasets](#download-datasets)
   - [Download Paper and Supplementary Material](#download-paper-and-supplementary-material)
   - [Licensing](#licensing)
