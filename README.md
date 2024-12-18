@@ -203,7 +203,7 @@ RCAEval benchmark includes three datasets: RE1, RE2, and RE3, designed to compre
 
 |   Dataset   |   Systems  |   Fault Types            |   Cases  |   Metrics  |   Logs (millions)  |   Traces (millions)  |
 |-------------|------------|--------------------------|----------|------------|--------------------|----------------------|
-|   RE1 [14]  |   3        |   3 Resource, 2 Network  |   375    |   49-212   |   N/A              |   N/A                |
+|   RE1       |   3        |   3 Resource, 2 Network  |   375    |   49-212   |   N/A              |   N/A                |
 |   RE2       |   3        |   4 Resource, 2 Network  |   270    |   77-376   |   8.6-26.9         |   39.6-76.7          |
 |   RE3       |   3        |   5 Code-level           |   90     |   68-322   |   1.7-2.7          |   4.5-4.7            |
 
