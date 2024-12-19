@@ -21,6 +21,9 @@ from RCAEval.utility import (
     download_syn_causil_dataset,
     download_rca_rcd_dataset,
     download_rca_circa_dataset,
+    download_re1_dataset,
+    download_re2_dataset,
+    download_re3_dataset,
 )
 
 
@@ -34,6 +37,9 @@ from RCAEval.utility import (
     download_syn_causil_dataset,
     download_rca_rcd_dataset,
     download_rca_circa_dataset,
+    download_re1_dataset,
+    download_re2_dataset,
+    download_re3_dataset,
 ])
 def test_download_dataset(func: Callable):
     """Test download dataset."""
