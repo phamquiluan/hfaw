@@ -225,19 +225,13 @@ download_re2_dataset()
 download_re3_dataset()
 ```
 <details>
-<summary>Expected output after running the above code (it takes few minutes to download our datasets)</summary>
+<summary>Expected output after running the above code (it takes half an hour to download an extract the datasets. )</summary>
 
 ```
 $ python test.py
-Downloading syn_rcd.zip..: 100%|██████████| 11.2M/11.2M [00:03<00:00, 3.56MiB/s]
-Downloading syn_circa.zip..: 100%|████████| 52.5M/52.5M [00:06<00:00, 7.51MiB/s]
-Downloading syn_causil.zip..: 100%|███████| 73.8M/73.8M [00:09<00:00, 8.05MiB/s]
-Downloading rca_circa.zip..: 100%|████████| 52.7M/52.7M [00:06<00:00, 7.95MiB/s]
-Downloading rca_rcd.zip..: 100%|██████████| 22.7M/22.7M [00:04<00:00, 5.16MiB/s]
-Downloading online-boutique.zip..: 100%|██| 31.0M/31.0M [00:04<00:00, 6.49MiB/s]
-Downloading sock-shop-1.zip..: 100%|██████| 3.54M/3.54M [00:02<00:00, 1.68MiB/s]
-Downloading sock-shop-2.zip..: 100%|██████| 79.1M/79.1M [00:09<00:00, 8.38MiB/s]
-Downloading train-ticket.zip..: 100%|███████| 280M/280M [00:27<00:00, 10.1MiB/s]
+Downloading RE1.zip..: 100%|█████████████████████| 390M/390M [01:02<00:00, 6.22MiB/s]
+Downloading RE2.zip..: 100%|███████████████████| 4.21G/4.21G [11:23<00:00, 6.17MiB/s]
+Downloading RE3.zip..: 100%|█████████████████████| 534M/534M [01:29<00:00, 5.97MiB/s]
 ```
 </details>
 
