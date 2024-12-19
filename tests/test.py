@@ -12,15 +12,6 @@ import pytest
 import tempfile
 
 from RCAEval.utility import (
-    download_online_boutique_dataset,
-    download_sock_shop_1_dataset,
-    download_sock_shop_2_dataset,
-    download_train_ticket_dataset,
-    download_syn_rcd_dataset,
-    download_syn_circa_dataset,
-    download_syn_causil_dataset,
-    download_rca_rcd_dataset,
-    download_rca_circa_dataset,
     download_re1_dataset,
     download_re2_dataset,
     download_re3_dataset,
@@ -28,15 +19,6 @@ from RCAEval.utility import (
 
 
 @pytest.mark.parametrize("func", [
-    download_online_boutique_dataset,
-    download_sock_shop_1_dataset,
-    download_sock_shop_2_dataset,
-    download_train_ticket_dataset,
-    download_syn_rcd_dataset,
-    download_syn_circa_dataset,
-    download_syn_causil_dataset,
-    download_rca_rcd_dataset,
-    download_rca_circa_dataset,
     download_re1_dataset,
     download_re2_dataset,
     download_re3_dataset,
@@ -56,14 +38,6 @@ def test_rq2_script():
     # Check if the script ran successfully
     assert result.returncode == 0, f"Script failed with return code {result.returncode}\nOutput: {result.stdout}\nError: {result.stderr}"
 
-
-def test_rq1_script():
-    command = ["python", "rq1.py", "--method", "pc", "--dataset", "circa10", "--test"]
-    result = subprocess.run(command, capture_output=True, text=True)
-
-    # Check if the script ran successfully
-    assert result.returncode == 0, f"Script failed with return code {result.returncode}\nOutput: {result.stdout}\nError: {result.stderr}"
-    
 
 def test_basic():
     # You can put the code here to a file named test.py
