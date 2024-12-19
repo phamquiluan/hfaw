@@ -26,7 +26,7 @@ RCAEval is an open-source benchmark that provides three comprehensive datasets (
 
 ## Prerequisites
 
-We recommend using machines equipped with at least 8 cores, 16GB RAM, and ~30GB available disk space with Ubuntu 22.04 or Ubuntu 20.04, and Python3.10 or above.
+We recommend using machines equipped with at least 8 cores, 16GB RAM, and ~50GB available disk space with Ubuntu 22.04 or Ubuntu 20.04, and Python3.10 or above.
 
 ## Installation
 
