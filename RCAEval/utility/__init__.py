@@ -234,6 +234,19 @@ def download_re2_dataset(local_path=None):
     with zipfile.ZipFile("RE2.zip", 'r') as file:
         file.extractall(local_path)
     os.remove("RE2.zip")
+
+def download_re3_dataset(local_path=None):
+    """Download the RE3 dataset from Zenodo."""
+    if local_path == None:
+        local_path = "data"
+    if not os.path.exists(local_path):
+        os.makedirs(local_path)
+    if os.path.exists(join(local_path, "RE3")):
+        return
+    download_data("https://zenodo.org/records/14504481/files/RE3.zip?download=1", "RE3.zip")
+    with zipfile.ZipFile("RE3.zip", 'r') as file:
+        file.extractall(local_path)
+    os.remove("RE3.zip")
     
 def read_data(data_path, strip=True):
     """Read CSV data for root cause analysis."""
