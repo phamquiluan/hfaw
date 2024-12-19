@@ -138,7 +138,7 @@ RCAEval stores all the RCA methods in the `e2e` module (implemented in `RCAEval.
 
 ## Reproducibility
 
-We provide a script named `rq2.py` to assist in reproducing the RQ2 results from our paper. This script can be executed using Python with the following syntax: 
+We provide a script named `rq2.py` to assist in reproducing the RQ2 results from [our ASE paper](https://dl.acm.org/doi/abs/10.1145/3691620.3695065). This script can be executed using Python with the following syntax: 
 
 ```
 python rq2.py [-h] [--dataset DATASET] [--method METHOD] [--tdelta TDELTA] [--length LENGTH] [--test] 
