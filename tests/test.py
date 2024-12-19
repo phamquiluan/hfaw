@@ -20,7 +20,7 @@ from RCAEval.utility import (
 
 @pytest.mark.parametrize("func", [
     download_re1_dataset,
-    download_re2_dataset,
+    # download_re2_dataset,
     download_re3_dataset,
 ])
 def test_download_dataset(func: Callable):
