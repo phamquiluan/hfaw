@@ -94,7 +94,6 @@ tests/test.py .                                                            [100%
 =============================== 1 passed in 3.16s ================================
 ```
 
-
 ## How-to-use
 
 ### Data format
@@ -102,8 +101,6 @@ tests/test.py .                                                            [100%
 The telemetry data must be presented as `pandas.DataFrame`. We require the data to have a column named `time` that stores the timestep. A sample of valid data could be downloaded using the `download_data()` method that we will demonstrate shortly below.
 
 ### Basic usage example
-
-RCAEval stores all the RCA methods in the `e2e` module (implemented in `RCAEval.e2e`). Available methods are: pc_pagerank, pc_randomwalk, fci_pagerank, fci_randomwalk, granger_pagerank, granger_randomwalk, lingam_pagerank, lingam_randomwalk, fges_pagerank, fges_randomwalk, ntlr_pagerank, ntlr_randomwalk, causalrca, causalai, run, microcause, e_diagnosis, baro, rcd, nsigma, and circa.
 
 A basic example to use BARO, an RCA baseline, to perform RCA are presented as follows,
 
@@ -134,10 +131,12 @@ Downloading data.csv..: 100%|█████████████████
 Top 5 root causes: ['emailservice_mem', 'recommendationservice_mem', 'cartservice_mem', 'checkoutservice_latency', 'cartservice_latency']
 ```
 
+## RCA Baselines 
+
+RCAEval stores all the RCA methods in the `e2e` module (implemented in `RCAEval.e2e`). Available methods are: pc_pagerank, pc_randomwalk, fci_pagerank, fci_randomwalk, granger_pagerank, granger_randomwalk, lingam_pagerank, lingam_randomwalk, fges_pagerank, fges_randomwalk, ntlr_pagerank, ntlr_randomwalk, causalrca, causalai, run, microcause, e_diagnosis, baro, rcd, nsigma, and circa.
+
 
 ## Reproducibility
-
-### Reproduce RQ2 - Root Cause Analysis Performance
 
 We provide a script named `rq2.py` to assist in reproducing the RQ2 results from our paper. This script can be executed using Python with the following syntax: 
 
