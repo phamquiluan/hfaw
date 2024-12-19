@@ -215,9 +215,9 @@ We also provide utility functions to download our datasets using Python. The dow
 
 ```python
 from RCAEval.utility import (
-    download_re1_dataset(),
-    download_re2_dataset(),
-    download_re3_dataset(),
+    download_re1_dataset,
+    download_re2_dataset,
+    download_re3_dataset,
 )
 
 download_re1_dataset()
