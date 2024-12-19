@@ -209,6 +209,18 @@ def download_rca_circa_dataset(local_path=None):
         file.extractall(local_path)
     os.remove("rca_circa.zip")
 
+def download_re1_dataset(local_path=None):
+    """Download the RE1 dataset from Zenodo."""
+    if local_path == None:
+        local_path = "data"
+    if not os.path.exists(local_path):
+        os.makedirs(local_path)
+    if os.path.exists(join(local_path, "RE1")):
+        return
+    download_data("https://zenodo.org/records/14504481/files/RE1.zip?download=1", "RE1.zip")
+    with zipfile.ZipFile("RE1.zip", 'r') as file:
+        file.extractall(local_path)
+    os.remove("RE1.zip")
 
 def read_data(data_path, strip=True):
     """Read CSV data for root cause analysis."""
