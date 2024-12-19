@@ -199,6 +199,9 @@ data/fse-*
 data/sock-shop-2
 .ar
 data/_fse-ob
+data/RE1
+data/RE2
+data/RE3
 env-dev
 data/syn_circa
 data/syn_rcd
