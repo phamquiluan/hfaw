@@ -13,19 +13,18 @@ RCAEval is an open-source benchmark that provides three comprehensive datasets (
 </p>
 
 **Table of Contents** 
-- [🕵️ RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems (under construction)](#️-rcaeval-a-benchmark-for-root-cause-analysis-of-microservice-systems-under-construction)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [How-to-use](#how-to-use)
-    - [Data format](#data-format)
-    - [Basic usage example](#basic-usage-example)
-  - [Reproducibility](#reproducibility)
-    - [Reproduce RQ2 - Root Cause Analysis Performance](#reproduce-rq2---root-cause-analysis-performance)
-  - [Download Datasets](#download-datasets)
-  - [Licensing](#licensing)
-  - [Acknowledgments](#acknowledgments)
-  - [Change Logs](#change-logs)
-  - [Contact](#contact)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+  * [How-to-use](#how-to-use)
+    + [Data format](#data-format)
+    + [Basic usage example](#basic-usage-example)
+  * [RCA Baselines](#rca-baselines)
+  * [Reproducibility](#reproducibility)
+  * [Download Datasets](#download-datasets)
+  * [Licensing](#licensing)
+  * [Acknowledgments](#acknowledgments)
+  * [Change Logs](#change-logs)
+  * [Contact](#contact)
 
 ## Prerequisites
 
@@ -131,7 +130,46 @@ Downloading data.csv..: 100%|█████████████████
 Top 5 root causes: ['emailservice_mem', 'recommendationservice_mem', 'cartservice_mem', 'checkoutservice_latency', 'cartservice_latency']
 ```
 
-## RCA Baselines 
+## Available Datasets
+
+RCAEval benchmark includes three datasets: RE1, RE2, and RE3, designed to comprehensively support benchmarking RCA in microservice systems. Together, our three datasets feature 735 failure cases collected from three microservice systems (Online Boutique, Sock Shop, and Train Ticket) and including 11 fault types. Each failure case also includes annotated root cause service and root cause indicator (e.g., specific metric or log indicating the root cause). The statistics of the datasets are presented in the Table below.
+
+|   Dataset   |   Systems  |   Fault Types            |   Cases  |   Metrics  |   Logs (millions)  |   Traces (millions)  |
+|-------------|------------|--------------------------|----------|------------|--------------------|----------------------|
+|   RE1       |   3        |   3 Resource, 2 Network  |   375    |   49-212   |   N/A              |   N/A                |
+|   RE2       |   3        |   4 Resource, 2 Network  |   270    |   77-376   |   8.6-26.9         |   39.6-76.7          |
+|   RE3       |   3        |   5 Code-level           |   90     |   68-322   |   1.7-2.7          |   4.5-4.7            |
+
+Our datasets and their description are publicly available in Zenodo repository with the following information:
+- Dataset DOI: https://doi.org/10.5281/zenodo.14504481
+- Dataset URL: [https://zenodo.org/records/13305663](https://zenodo.org/records/14504481)
+
+We also provide utility functions to download our datasets using Python. The downloaded datasets will be available at directory `data`.
+
+```python
+from RCAEval.utility import (
+    download_re1_dataset,
+    download_re2_dataset,
+    download_re3_dataset,
+)
+
+download_re1_dataset()
+download_re2_dataset()
+download_re3_dataset()
+```
+<details>
+<summary>Expected output after running the above code (it takes half an hour to download an extract the datasets. )</summary>
+
+```
+$ python test.py
+Downloading RE1.zip..: 100%|█████████████████████| 390M/390M [01:02<00:00, 6.22MiB/s]
+Downloading RE2.zip..: 100%|███████████████████| 4.21G/4.21G [11:23<00:00, 6.17MiB/s]
+Downloading RE3.zip..: 100%|█████████████████████| 534M/534M [01:29<00:00, 5.97MiB/s]
+```
+</details>
+
+
+## Available Baselines 
 
 RCAEval stores all the RCA methods in the `e2e` module (implemented in `RCAEval.e2e`). Available methods are: pc_pagerank, pc_randomwalk, fci_pagerank, fci_randomwalk, granger_pagerank, granger_randomwalk, lingam_pagerank, lingam_randomwalk, fges_pagerank, fges_randomwalk, ntlr_pagerank, ntlr_randomwalk, causalrca, causalai, run, microcause, e_diagnosis, baro, rcd, nsigma, and circa.
 
@@ -197,45 +235,6 @@ Avg speed: 0.07
 ```
 
 We can replace the baro method with other methods (e.g., nsigma, fci_randomwalk) and substitute online-boutique with other datasets to replicate the corresponding results shown in Table 5. This reproduction process is also integrated into our Continuous Integration (CI) setup. For more details, refer to the [.github/workflows/reproduce-rq2.yml](.github/workflows/reproduce-rq2.yml) file.
-
-
-## Download Datasets
-
-RCAEval benchmark includes three datasets: RE1, RE2, and RE3, designed to comprehensively support benchmarking RCA in microservice systems. Together, our three datasets feature 735 failure cases collected from three microservice systems (Online Boutique, Sock Shop, and Train Ticket) and including 11 fault types. Each failure case also includes annotated root cause service and root cause indicator (e.g., specific metric or log indicating the root cause). The statistics of the datasets are presented in the Table below.
-
-|   Dataset   |   Systems  |   Fault Types            |   Cases  |   Metrics  |   Logs (millions)  |   Traces (millions)  |
-|-------------|------------|--------------------------|----------|------------|--------------------|----------------------|
-|   RE1       |   3        |   3 Resource, 2 Network  |   375    |   49-212   |   N/A              |   N/A                |
-|   RE2       |   3        |   4 Resource, 2 Network  |   270    |   77-376   |   8.6-26.9         |   39.6-76.7          |
-|   RE3       |   3        |   5 Code-level           |   90     |   68-322   |   1.7-2.7          |   4.5-4.7            |
-
-Our datasets and their description are publicly available in Zenodo repository with the following information:
-- Dataset DOI: https://doi.org/10.5281/zenodo.14504481
-- Dataset URL: [https://zenodo.org/records/13305663](https://zenodo.org/records/14504481)
-
-We also provide utility functions to download our datasets using Python. The downloaded datasets will be available at directory `data`.
-
-```python
-from RCAEval.utility import (
-    download_re1_dataset,
-    download_re2_dataset,
-    download_re3_dataset,
-)
-
-download_re1_dataset()
-download_re2_dataset()
-download_re3_dataset()
-```
-<details>
-<summary>Expected output after running the above code (it takes half an hour to download an extract the datasets. )</summary>
-
-```
-$ python test.py
-Downloading RE1.zip..: 100%|█████████████████████| 390M/390M [01:02<00:00, 6.22MiB/s]
-Downloading RE2.zip..: 100%|███████████████████| 4.21G/4.21G [11:23<00:00, 6.17MiB/s]
-Downloading RE3.zip..: 100%|█████████████████████| 534M/534M [01:29<00:00, 5.97MiB/s]
-```
-</details>
 
 
 ## Licensing
