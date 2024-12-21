@@ -101,7 +101,7 @@ The telemetry data must be presented as `pandas.DataFrame`. We require the data 
 
 ### Basic usage example
 
-A basic example to use BARO, a metric-based RCA baseline, to perform RCA using metrics are presented as follows,
+A basic example to use BARO, a metric-based RCA baseline, to perform RCA are presented as follows,
 
 ```python
 # You can put the code here to a file named test.py
