@@ -111,6 +111,8 @@ def mmnsigma(data, inject_time=None, dataset=None, num_loop=None, sli=None, anom
     
     # == metric ==
     for col in normal_metric.columns:
+        if col == "time":
+            continue
         a = normal_metric[col].to_numpy()
         b = anomal_metric[col].to_numpy()
 
