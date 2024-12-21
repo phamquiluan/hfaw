@@ -158,7 +158,7 @@ download_re2_dataset()
 download_re3_dataset()
 ```
 <details>
-<summary>Expected output after running the above code (it takes half an hour to download an extract the datasets. )</summary>
+<summary>Expected output after running the above code (it takes half an hour to download and extract the datasets. )</summary>
 
 ```
 $ python test.py
