@@ -52,7 +52,7 @@ if is_py310():
         pc_randomwalk,
     )
     from .run import run
-    from .baro import baro
+    from .baro import baro, mmbaro, mmnsigma
 else:
     from .rcd import rcd
 
