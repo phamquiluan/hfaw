@@ -1,4 +1,4 @@
-# 🕵️ RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems (under construction)
+# 🕵️ RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems
 
 [![DOI](https://zenodo.org/badge/840137303.svg)](https://zenodo.org/doi/10.5281/zenodo.13294048)
 [![pypi package](https://img.shields.io/pypi/v/RCAEval.svg)](https://pypi.org/project/RCAEval)
