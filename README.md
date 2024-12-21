@@ -97,11 +97,11 @@ tests/test.py .                                                            [100%
 
 ### Data format
 
-The telemetry data must be presented as `pandas.DataFrame`. We require the data to have a column named `time` that stores the timestep. A sample of valid data could be downloaded using the `download_data()` method that we will demonstrate shortly below.
+The telemetry data must be presented as `pandas.DataFrame`. We require the data to have a column named `time` that stores the timestep. A sample of valid data could be downloaded using the `download_data()` or `download_multi_source_data()` method that we will demonstrate shortly below.
 
 ### Basic usage example
 
-A basic example to use BARO, an RCA baseline, to perform RCA are presented as follows,
+A basic example to use BARO, a metric-based RCA baseline, to perform RCA using metrics are presented as follows,
 
 ```python
 # You can put the code here to a file named test.py
@@ -129,6 +129,9 @@ $ python test.py
 Downloading data.csv..: 100%|████████████████████| 570k/570k [00:00<00:00, 19.8MiB/s]
 Top 5 root causes: ['emailservice_mem', 'recommendationservice_mem', 'cartservice_mem', 'checkoutservice_latency', 'cartservice_latency']
 ```
+
+A tutorial of using Multi-source BARO to diagnose failure using multi-source telemetry data (metrics, logs, and traces) is presented in [docs/multi-source-rca-demo.ipynb](docs/multi-source-rca-demo.ipynb).
+
 
 ## Available Datasets
 
