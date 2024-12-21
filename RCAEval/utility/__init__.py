@@ -95,6 +95,13 @@ def download_metric_sample(remote_url=None, local_path=None):
     download_data(remote_url, local_path)
 
 
+def download_multisource_sample():
+    metrics = None
+    logs = None 
+    traces = None 
+    return metrics, logs, traces
+
+
 def download_online_boutique_dataset(local_path=None):
     """Download the Online Boutique dataset from Zenodo."""
     if local_path == None:
