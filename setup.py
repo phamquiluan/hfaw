@@ -13,7 +13,7 @@ with open("README.md", encoding="utf-8") as f:
     
 setup(
     name="RCAEval",
-    version="0.1.6",
+    version="0.2.1",
     packages=["RCAEval"],
     include_package_data=True,
     long_description=long_description,
