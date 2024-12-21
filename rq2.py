@@ -54,11 +54,10 @@ if is_py310():
         ntlr_randomwalk,
         pc_pagerank,
         pc_randomwalk,
-        robust_scaler,
+        baro,
         run,
     )
 
-    baro = robust_scaler
 else:
     from RCAEval.e2e import dummy, e_diagnosis, ht, rcd
 
