@@ -93,6 +93,21 @@ def download_metric_sample(remote_url=None, local_path=None):
         local_path = "data.csv"
 
     download_data(remote_url, local_path)
+    
+
+def download_multi_source_sample(local_path=None):
+    """Download a sample multi-source telemetry data case"""
+    if local_path == None:
+        local_path = "data"
+    if not os.path.exists(local_path):
+        os.makedirs(local_path)
+    if os.path.exists(join(local_path, "multi-source-data")):
+        return
+    
+    download_data("https://github.com/phamquiluan/RCAEval/releases/download/0.2.0/multi-source-data.zip", "multi-source-data.zip")
+    with zipfile.ZipFile("multi-source-data.zip", 'r') as file:
+        file.extractall(local_path)
+    os.remove("multi-source-data.zip")
 
 
 def download_multisource_sample():
