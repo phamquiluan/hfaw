@@ -85,7 +85,7 @@ def download_data(remote_url=None, local_path=None):
         print("ERROR, something went wrong")
 
 
-def download_metric_sample(remote_path=None, local_path=None):
+def download_metric_sample(remote_url=None, local_path=None):
     """Download a sample metric case"""
     if remote_url is None:
         remote_url = "https://github.com/phamquiluan/baro/releases/download/0.0.4/simple_data.csv"
