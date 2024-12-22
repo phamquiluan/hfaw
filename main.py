@@ -33,7 +33,8 @@ from RCAEval.utility import (
 
 
 if is_py310():
-    from RCAEval.e2e import ( 
+    from RCAEval.e2e import (
+        baro,
         circa,
         cloudranger,
         cmlp_pagerank,
@@ -49,12 +50,12 @@ if is_py310():
         lingam_randomwalk,
         micro_diag,
         microcause,
+        mscred,
         nsigma,
         ntlr_pagerank,
         ntlr_randomwalk,
         pc_pagerank,
         pc_randomwalk,
-        baro,
         run,
     )
 
