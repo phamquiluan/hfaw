@@ -180,29 +180,9 @@ def process(data_path):
     data_length = args.length * 60 // 2
 
     data_dir = dirname(data_path)
-    # for synthetic dataset
-    if "rca_" in data_path:
-        # dataset = basename(dirname(dirname(dirname(dirname(data_path)))))
-        case = basename(dirname(data_path))
 
-        service = "SIM"
-        metric = None
-        with open(join(data_dir, "root_cause.txt")) as f:
-            metric = f.read().splitlines()[0]
-
-        # read inject_time
-        with open(join(data_dir, "inject_time.txt")) as f:
-            inject_time = int(f.readlines()[0].strip()) + args.tdelta
-
-        with open(join(data_dir, "fe_service.txt")) as f:
-            sli = f.readlines()[0].strip()
-
-        sli = "SIM_" + sli
-    # for real world dataset
-    else:
-        # dataset = basename(dirname(dirname(dirname(data_path))))
-        service, metric = basename(dirname(dirname(data_path))).split("_")
-        case = basename(dirname(data_path))
+    service, metric = basename(dirname(dirname(data_path))).split("_")
+    case = basename(dirname(data_path))
 
     rp = join(result_path, f"{service}_{metric}_{case}.json")
 
@@ -234,18 +214,13 @@ def process(data_path):
     data = data.fillna(0)
 
     cut_length = 0
-    if "rca_" in data_dir:
-        normal_df = data[data["time"] < inject_time].tail(data_length)
-        anomal_df = data[data["time"] >= inject_time].head(data_length)
-        cut_length = min(normal_df.time) - min(data.time)
-        data = pd.concat([normal_df, anomal_df], ignore_index=True)
-    else:
-        with open(join(data_dir, "inject_time.txt")) as f:
-            inject_time = int(f.readlines()[0].strip()) + args.tdelta
-        normal_df = data[data["time"] < inject_time].tail(data_length)
-        anomal_df = data[data["time"] >= inject_time].head(data_length)
-        cut_length = min(normal_df.time) - min(data.time)
-        data = pd.concat([normal_df, anomal_df], ignore_index=True)
+
+    with open(join(data_dir, "inject_time.txt")) as f:
+        inject_time = int(f.readlines()[0].strip()) + args.tdelta
+    normal_df = data[data["time"] < inject_time].tail(data_length)
+    anomal_df = data[data["time"] >= inject_time].head(data_length)
+    cut_length = min(normal_df.time) - min(data.time)
+    data = pd.concat([normal_df, anomal_df], ignore_index=True)
 
     # num column, exclude time
     num_node = len(data.columns) - 1
