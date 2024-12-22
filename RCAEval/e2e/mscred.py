@@ -274,7 +274,6 @@ if not os.path.exists(matrix_data_path):
     os.makedirs(matrix_data_path)
 
 
-
 def generate_signature_matrix_node():
 	data = np.array(pd.read_csv(raw_data_path, header = None), dtype=np.float64)
 	sensor_n = data.shape[0]
@@ -722,18 +721,6 @@ if __name__ == '__main__':
             error_list = [(col_name_map[i], round(error)) for i, error in error_list]
             print(error_list[:5])
             exit(0)
-        # print("Anomaly is not detected")
 
 
 
-    # TODO:
-    # - reconstruct abnormal data
-    # - evaluate reconstruction error
-    # - do RCA
-
-    # # 训练阶段
-    # # mscred.load_state_dict(torch.load("./checkpoints/model1.pth"))
-    # optimizer = torch.optim.Adam(mscred.parameters(), lr = 0.0002)
-    # train(dataLoader["train"], mscred, optimizer, 10, device)
-    # print("保存模型中....")
-    # torch.save(mscred.state_dict(), "./checkpoints/model2.pth")
