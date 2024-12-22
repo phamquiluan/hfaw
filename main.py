@@ -248,6 +248,7 @@ def process(data_path):
 
     try:
         st = datetime.now()
+        
         out = func(
             data,
             inject_time,
