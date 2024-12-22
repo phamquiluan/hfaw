@@ -35,6 +35,7 @@ if is_py310():
         from .causalai import causalai
     except Exception as e:
         pass
+    from .baro import baro, mmbaro, mmnsigma
     from .circa import circa
     from .cloudranger import cloudranger
     from .fci_pagerank import fci_pagerank
@@ -52,8 +53,8 @@ if is_py310():
         pc_randomwalk,
     )
     from .run import run
-    from .baro import baro, mmbaro, mmnsigma
     from .mscred import mscred
+    from .tracerca import tracerca
 else:
     from .rcd import rcd
 
