@@ -58,6 +58,7 @@ if is_py310():
     from .tracerca import tracerca
 else:
     from .rcd import rcd
+    from .mmrcd import mmrcd
 
 
 def dummy(data, inject_time=None, dataset=None, *args, **kwargs):

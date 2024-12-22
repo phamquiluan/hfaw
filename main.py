@@ -62,7 +62,7 @@ if is_py310():
     )
 
 else:
-    from RCAEval.e2e import dummy, e_diagnosis, ht, rcd
+    from RCAEval.e2e import dummy, e_diagnosis, ht, rcd, mmrcd
 
 try:
     from RCAEval.e2e.ges_pagerank import fges_pagerank, fges_randomwalk
