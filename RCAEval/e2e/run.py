@@ -513,10 +513,6 @@ def GraphConstruct(target, cuda, epochs, lr, optimizername,  file, args):
     return edge_to_target
 
 
-
-
-
-
 def pearson_correlation(x, y):
     if len(x) != len(y):
         raise ValueError("The lengths of the input variables must be the same.")
@@ -573,7 +569,7 @@ def breaktie(pagerank, G, trigger_point):
                 for i in range(len(dis_rank)):
                     rank.append(tmp_rank[dis_rank[i]])
     return rank
-    
+
 
 def Run(datafile, args):
     df_data = pd.read_csv(datafile)
@@ -603,10 +599,6 @@ def CreateGraph(edge, columns):
         p1,p2 = pair
         G.add_edge(columns[p2], columns[p1])
     return G
-
-
-
-
 
 
 def main(datafiles):
@@ -640,8 +632,6 @@ def main(datafiles):
         else:
             personalization[node] = 0.5
     pagerank = nx.pagerank(G, personalization=personalization)
-    print("AAAAAAAAAAAAAAA")
-    print(sorted(pagerank.items(), key=lambda x: x[1], reverse=True))
     pagerank = dict(sorted(pagerank.items(), key=lambda x: x[1], reverse=True))
     
 
@@ -651,21 +641,14 @@ def run(data, inject_time=None, dataset=None, with_bg=False, args=None, **kwargs
     args.epochs = 1
     args.learning_rate = 0.001
     args.optimizer = 'Adam'
-    # parser.add_argument('--root_path', type=str)
-    # parser.add_argument('--data_path', type=str)
     args.num_workers = 8
     args.root_cause = "unknown"
-    # parser.add_argument('--root_cause', type=str)
-    # DONE SET ARGS
 
     nrepochs = args.epochs
     learningrate = args.learning_rate
     optimizername = args.optimizer
     cuda=args.cuda
-    # trigger_point = args.trigger_point
     root_cause = args.root_cause
-
-
 
     data_path = os.path.join(args.root_path, args.data_path)
     edge_pair, columns = Run(data_path, args) 
@@ -699,18 +682,13 @@ def run(data, inject_time=None, dataset=None, with_bg=False, args=None, **kwargs
         else:
             personalization[node] = 0.5
     pagerank = nx.pagerank(G, personalization=personalization)
-    # print("AAAAAAAAAAAAAAA")
     ranks = sorted(pagerank.items(), key=lambda x: x[1], reverse=True)
-    # pagerank = dict(sorted(pagerank.items(), key=lambda x: x[1], reverse=True))
 
     ranks = [r[0] for r in ranks]
     return {
         "ranks": ranks
     }
     
-
-
-
 
 if __name__ == "__main__":
 
@@ -727,33 +705,3 @@ if __name__ == "__main__":
 
     output = run(data, inject_time=None, dataset="sock-shop", args=args)
     print(output)
-
-#    parser = argparse.ArgumentParser(description='RUN')
-#
-#    parser.add_argument('--cuda', type=str, default="cuda:0")
-#    parser.add_argument('--epochs', type=int, default=1)
-#    parser.add_argument('--learning_rate', type=float, default=0.001)
-#    parser.add_argument('--optimizer', type=str, default='Adam')
-#    # parser.add_argument('--trigger_point', type=str, default='None', help='Calculate the distance between node and trigger point')
-#    parser.add_argument('--root_path', type=str)
-#    parser.add_argument('--data_path', type=str)
-#    parser.add_argument('--num_workers', type=float, default=10)
-#    parser.add_argument('--root_cause', type=str)
-#
-#    args = parser.parse_args()
-#
-#    args.root_path = os.getcwd()
-#    args.data_path = "data/sock-shop-1/carts_cpu/1/data.csv"
-#    args.root_cause = "carts_cpu"
-#    args.cuda = "-1"
-#
-#    nrepochs = args.epochs
-#    learningrate = args.learning_rate
-#    optimizername = args.optimizer
-#    cuda=args.cuda
-#    # trigger_point = args.trigger_point
-#    root_cause = args.root_cause
-#    datafiles = os.path.join(args.root_path, args.data_path)
-#
-#    main(datafiles)
-#
