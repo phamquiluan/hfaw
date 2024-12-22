@@ -30,7 +30,7 @@ jobs:
           no_output_timeout: 3h
       - run: 
           name: "Reproduce BARO performance on the Online Boutique dataset"
-          command: python rq2.py --method baro --dataset online-boutique
+          command: python main.py --method baro --dataset online-boutique
 
 workflows:
   main-flow:

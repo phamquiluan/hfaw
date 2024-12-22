@@ -32,7 +32,7 @@ def test_download_dataset(func: Callable):
     
 
 def test_rq2_script():
-    command = ["python", "rq2.py", "--method", "baro", "--dataset", "online-boutique", "--test"]
+    command = ["python", "main.py", "--method", "baro", "--dataset", "online-boutique", "--test"]
     result = subprocess.run(command, capture_output=True, text=True)
 
     # Check if the script ran successfully
