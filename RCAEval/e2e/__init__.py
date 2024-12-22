@@ -53,6 +53,7 @@ if is_py310():
     )
     from .run import run
     from .baro import baro, mmbaro, mmnsigma
+    from .mscred import mscred
 else:
     from .rcd import rcd
 
