@@ -12,7 +12,7 @@ import pytest
 import tempfile
 
 
-def test_rq2_rcd_script():
+def test_rcd():
     command = ["python", "main.py", "--method", "rcd", "--dataset", "online-boutique", "--test"]
     result = subprocess.run(command, capture_output=True, text=True)
 
