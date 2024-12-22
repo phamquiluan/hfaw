@@ -114,14 +114,14 @@ bash script/link.sh
 Users can reproduce the RCA performance of the RCD method using the following command:
 
 ```bash
-python rq2.py --method rcd --dataset online-boutique
+python main.py --method rcd --dataset online-boutique
 ```
 
 <details>
 <summary>The expected output would look like this (it takes ~33 minutes for 1 iteration)</summary>
 
 ```bash
-$ python rq2.py --method rcd --dataset online-boutique
+$ python main.py --method rcd --dataset online-boutique
 100%|███████████████████████████████████████████| 125/125 [33:44<00:00, 16.20s/it]
 --- Evaluation results ---
 Avg@5-CPU:   0.94
@@ -163,14 +163,14 @@ pip install feature_engine
 Users can perform testing using the following commands:
 
 ```bash
-python rq2.py --method fges_randomwalk --dataset online-boutique --test
+python main.py --method fges_randomwalk --dataset online-boutique --test
 ```
 
 <details>
 <summary>The expected output would look like this</summary>
 
 ```bash
-$ python rq2.py --method fges_randomwalk --dataset online-boutique --test
+$ python main.py --method fges_randomwalk --dataset online-boutique --test
 100%|███████████████████████████████████████████████| 2/2 [01:04<00:00, 32.33s/it]
 --- Evaluation results ---
 Avg@5-CPU:   0.94

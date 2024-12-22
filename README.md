@@ -178,10 +178,10 @@ RCAEval stores all the RCA methods in the `e2e` module (implemented in `RCAEval.
 
 ## Reproducibility
 
-We provide a script named `rq2.py` to assist in reproducing the RQ2 results from [our ASE paper](https://dl.acm.org/doi/abs/10.1145/3691620.3695065). This script can be executed using Python with the following syntax: 
+We provide a script named `main.py` to assist in reproducing the results from [our ASE paper](https://dl.acm.org/doi/abs/10.1145/3691620.3695065). This script can be executed using Python with the following syntax: 
 
 ```
-python rq2.py [-h] [--dataset DATASET] [--method METHOD] [--tdelta TDELTA] [--length LENGTH] [--test] 
+python main.py [-h] [--dataset DATASET] [--method METHOD] [--tdelta TDELTA] [--length LENGTH] [--test] 
 ```
 
 The available options and their descriptions are as follows:
@@ -201,7 +201,7 @@ options:
 For example, in Table 5, BARO [ $t_\Delta = 0$ ] achieves Avg@5 of 0.97, 1, 0.91, 0.98, and 0.67 for CPU, MEM, DISK, DELAY, and LOSS fault types on the Online Boutique dataset. To reproduce these results, you can run the following commands:
 
 ```bash
-python rq2.py --dataset online-boutique --method baro 
+python main.py --dataset online-boutique --method baro 
 ```
 
 The expected output should be exactly as presented in the paper (it takes less than 1 minute to run the code)
@@ -220,7 +220,7 @@ Avg speed: 0.07
 As presented in Table 5, BARO [ $t_\Delta = 60$ ] achieves Avg@5 of 0.94, 0.99, 0.87, 0.99, and 0.6 for CPU, MEM, DISK, DELAY, and LOSS fault types on the Online Boutique dataset. To reproduce these results, you can run the following commands:
 
 ```bash
-python rq2.py --dataset online-boutique --method baro --tdelta 60
+python main.py --dataset online-boutique --method baro --tdelta 60
 ```
 
 The expected output should be exactly as presented in the paper (it takes less than 1 minute to run the code)
@@ -236,7 +236,7 @@ Avg@5-LOSS:  0.6
 Avg speed: 0.07
 ```
 
-We can replace the baro method with other methods (e.g., nsigma, fci_randomwalk) and substitute online-boutique with other datasets to replicate the corresponding results shown in Table 5. This reproduction process is also integrated into our Continuous Integration (CI) setup. For more details, refer to the [.github/workflows/reproduce-rq2.yml](.github/workflows/reproduce-rq2.yml) file.
+We can replace the baro method with other methods (e.g., nsigma, fci_randomwalk) and substitute online-boutique with other datasets to replicate the corresponding results shown in Table 5. This reproduction process is also integrated into our Continuous Integration (CI) setup. For more details, refer to the [.github/workflows/reproducibility.yml](.github/workflows/reproducibility.yml) file.
 
 
 ## Licensing
