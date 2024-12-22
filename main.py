@@ -50,6 +50,7 @@ if is_py310():
         lingam_randomwalk,
         micro_diag,
         microcause,
+        microrank,
         mscred,
         nsigma,
         ntlr_pagerank,

@@ -42,6 +42,7 @@ if is_py310():
     from .granger_pagerank import granger_pagerank
     from .lingam_pagerank import lingam_pagerank, micro_diag
     from .microcause import microcause
+    from .microrank import microrank
     from .easyrca import easyrca
     from .pc_pagerank import cmlp_pagerank, ntlr_pagerank, pc_pagerank
     from .pc_randomwalk import (
