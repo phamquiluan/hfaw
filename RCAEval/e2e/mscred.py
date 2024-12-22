@@ -260,7 +260,11 @@ train_end = 8000  # train end point
 test_start = 8000  # test start point
 test_end = 20000  # test end point
 # raw_data_path = '/opt/home/s3967801/Pytorch-MSCRED/data/synthetic_data_with_anomaly-s-1.csv'  # path to load raw data
-save_data_path = '/opt/home/s3967801/Pytorch-MSCRED/data/'  # path to save data
+# save_data_path = '/opt/home/s3967801/Pytorch-MSCRED/data/'  # path to save data
+
+# create temporary directory for save_data_path
+from tempfile import TemporaryDirectory
+save_data_path = TemporaryDirectory()
 
 ts_colname="agg_time_interval"
 agg_freq='5min'
@@ -269,7 +273,6 @@ matrix_data_path = save_data_path + "matrix_data/"
 if not os.path.exists(matrix_data_path):
     os.makedirs(matrix_data_path)
 
-# create temporary directory 
 
 
 def generate_signature_matrix_node():
