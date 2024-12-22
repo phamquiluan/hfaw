@@ -252,8 +252,6 @@ class Dataset_RCA(Dataset):
         border1 = border1s[self.set_type]
         border2 = border2s[self.set_type]
 
-        # cols_data = df_raw.columns[1:] 
-        # df_data = df_raw[cols_data]
         df_data = df_raw
 
         train_data = df_data[border1:border2]
@@ -447,10 +445,6 @@ def GraphConstruct(target, cuda, epochs, lr, optimizername,  file, args):
         df_tmp.drop("time", axis=1, inplace=True) #synthetic don't need this one
     except:
         pass
-
-
-    # if "online-boutique" in args.data_path or "sock-shop-1" in args.data_path or "sock-shop-2" in args.data_path or "train-ticket" in args.data_path:
-    # df_tmp.drop(df_tmp.columns[0], axis=1, inplace=True)
 
     targetidx = df_tmp.columns.get_loc(target)  
 
