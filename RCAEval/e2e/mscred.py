@@ -264,7 +264,7 @@ test_end = 20000  # test end point
 
 # create temporary directory for save_data_path
 from tempfile import TemporaryDirectory
-save_data_path = TemporaryDirectory()
+save_data_path = TemporaryDirectory().name
 
 ts_colname="agg_time_interval"
 agg_freq='5min'
