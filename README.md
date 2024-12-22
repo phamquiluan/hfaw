@@ -260,6 +260,27 @@ We would like to express our sincere gratitude to the researchers and developers
 ## Change Logs
 - [Dec 2024] The prior version of RCAEval used in our ASE'24 paper are available in the [ase24 branch](https://github.com/phamquiluan/RCAEval/tree/ase24).
 
+## Citation
+
+
+```
+@inproceedings{pham2025benchmark,
+  title={RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems with Telemetry Data},
+  author={Pham, Luan and Zhang, Hongyu and Ha, Huong and Salim, Flora and Zhang, Xiuzhen},
+  year={2025}
+}
+```
+
+```
+@inproceedings{pham2024root,
+  title={Root Cause Analysis for Microservice System based on Causal Inference: How Far Are We?},
+  author={Pham, Luan and Ha, Huong and Zhang, Hongyu},
+  booktitle={Proceedings of the 39th IEEE/ACM International Conference on Automated Software Engineering},
+  pages={706--715},
+  year={2024}
+}
+```
+
 ## Contact
 
 [phamquiluan\@gmail.com](mailto:phamquiluan@gmail.com?subject=RCAEval)
