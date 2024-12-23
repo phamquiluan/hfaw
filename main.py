@@ -23,12 +23,13 @@ from RCAEval.utility import (
     dump_json,
     is_py310,
     load_json,
-    download_rca_circa_dataset,
-    download_rca_rcd_dataset,
     download_online_boutique_dataset,
     download_sock_shop_1_dataset,
     download_sock_shop_2_dataset,
     download_train_ticket_dataset,
+    download_re1_dataset,
+    download_re2_dataset,
+    download_re3_dataset, 
 )
 
 
@@ -75,27 +76,6 @@ try:
     from RCAEval.e2e.causalrca import causalrca
 except ImportError:
     pass
-    # print("causalrca not available")
-
-
-
-AVAILABLE_METHODS = sorted(
-    [
-        "causalrca",
-        "circa",
-        "cloudranger",
-        "dummy",
-        "fci_pagerank" "ges_pagerank",
-        "granger_pagerank",
-        "lingam_pagerank",
-        "micro_diag",
-        "microcause",
-        "nsigma",
-        "pc_pagerank",
-        "pc_randomwalk",
-        "rcd",
-    ]
-)
 
 
 def parse_args():
@@ -110,7 +90,7 @@ def parse_args():
     args = parser.parse_args()
 
     if args.method not in globals():
-        raise ValueError(f"{args.method=} not defined. Available: {AVAILABLE_METHODS}")
+        raise ValueError(f"{args.method=} not defined. Please check imported methods.")
 
     return args
 
