@@ -99,24 +99,35 @@ def parse_args():
 args = parse_args()
 
 # download dataset
-if "online-boutique" in args.dataset:
+if "online-boutique" in args.dataset or "re1-ob" in args.dataset:
     download_online_boutique_dataset()
 elif "sock-shop-1" in args.dataset:
     download_sock_shop_1_dataset()
-elif "sock-shop-2" in args.dataset:
+elif "sock-shop-2" in args.dataset or "re1-ss" in args.dataset:
     download_sock_shop_2_dataset()
-elif "train-ticket" in args.dataset:
+elif "train-ticket" in args.dataset or "re1-tt" in args.dataset:
     download_train_ticket_dataset()
+elif "re2" in args.dataset:
+    download_re2_dataset()
+elif "re3" in args.dataset:
+    download_re3_dataset()
+else:
+    raise Exception(f"{args.dataset} is not defined!")
 
 DATASET_MAP = {
-    "circa10": "data/rca_circa/10",
-    "circa50": "data/rca_circa/50",
-    "rcd10": "data/rca_rcd/10",
-    "rcd50": "data/rca_rcd/50",
     "online-boutique": "data/online-boutique",
     "sock-shop-1": "data/sock-shop-1",
     "sock-shop-2": "data/sock-shop-2",
     "train-ticket": "data/train-ticket",
+    "re1-ob": "data/online-boutique",
+    "re1-ss": "data/sock-shop-2",
+    "re1_tt": "data/train-ticket",
+    "re2-ob": "data/RE2/RE2-OB",
+    "re2-ss": "data/RE2/RE2-SS",
+    "re2-tt": "data/RE2/RE2-TT",
+    "re3-ob": "data/RE3/RE3-OB",
+    "re3-ss": "data/RE3/RE3-SS",
+    "re3-tt": "data/RE3/RE3-TT"
 }
 dataset = DATASET_MAP[args.dataset]
 
