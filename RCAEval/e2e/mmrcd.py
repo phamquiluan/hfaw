@@ -10,7 +10,7 @@ from causallearn.utils.cit import chisq
 from causallearn.utils.PCUtils import SkeletonDiscovery
 from sklearn.preprocessing import KBinsDiscretizer
 
-from cfm.io.time_series import drop_extra, convert_mem_mb, drop_constant, drop_time, preprocess
+from RCAEval.io.time_series import drop_extra, convert_mem_mb, drop_constant, drop_time, preprocess
 
 # =========== UTILS.py ====================
 # Note: Some of the functions defined here are only used for data
