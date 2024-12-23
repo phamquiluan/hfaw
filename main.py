@@ -97,16 +97,9 @@ def parse_args():
 
 
 args = parse_args()
-is_synthetic = False
 
 # download dataset
-if "circa" in args.dataset:
-    is_synthetic = True
-    download_rca_circa_dataset()
-elif "rcd" in args.dataset:
-    is_synthetic = True
-    download_rca_rcd_dataset()
-elif "online-boutique" in args.dataset:
+if "online-boutique" in args.dataset:
     download_online_boutique_dataset()
 elif "sock-shop-1" in args.dataset:
     download_sock_shop_1_dataset()
