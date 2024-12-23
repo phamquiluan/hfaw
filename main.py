@@ -82,7 +82,8 @@ def parse_args():
     parser = argparse.ArgumentParser(description="RCAEval evaluation")
     parser.add_argument("--method", type=str, help="Choose a method.")
     parser.add_argument("--dataset", type=str, help="Choose a dataset.", choices=[
-        "online-boutique", "sock-shop-1", "sock-shop-2", "train-ticket"
+        "online-boutique", "sock-shop-1", "sock-shop-2", "train-ticket",
+        "re1-ob", "re1-ss", "re1-tt", "re2-ob", "re2-ss", "re2-tt", "re3-ob", "re3-ss", "re3-tt"
     ])
     parser.add_argument("--length", type=int, default=None, help="Time series length (RQ4)")
     parser.add_argument("--tdelta", type=int, default=0, help="Specify $t_delta$ to simulate delay in anomaly detection")
