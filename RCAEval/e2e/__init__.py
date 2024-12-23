@@ -36,6 +36,7 @@ if is_py310():
     except Exception as e:
         pass
     from .baro import baro, mmbaro, mmnsigma
+    from .causalrca import causalrca
     from .circa import circa
     from .cloudranger import cloudranger
     from .fci_pagerank import fci_pagerank

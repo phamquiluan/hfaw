@@ -36,6 +36,7 @@ from RCAEval.utility import (
 if is_py310():
     from RCAEval.e2e import (
         baro,
+        causalrca,
         circa,
         cloudranger,
         cmlp_pagerank,
@@ -132,7 +133,6 @@ DATASET_MAP = {
 dataset = DATASET_MAP[args.dataset]
 
 
-
 # prepare input paths
 data_paths = list(glob.glob(os.path.join(dataset, "**/data.csv"), recursive=True))
 new_data_paths = []
@@ -164,7 +164,7 @@ def process(data_path):
     
     # convert length from minutes to seconds
     if args.length is None:
-        args.length = 10 if not is_synthetic else 2000
+        args.length = 10
     data_length = args.length * 60 // 2
 
     data_dir = dirname(data_path)
@@ -368,9 +368,6 @@ for service in services:
                     s_evaluator_all.add_case(ranks=s_ranks, answer=Node(service, "unknown"))
                     f_evaluator_all.add_case(ranks=f_ranks, answer=Node(service, "latency"))
 
-                if is_synthetic:
-                    s_evaluator_all.add_case(ranks=s_ranks, answer=Node(service, "unknown"))
-                    f_evaluator_all.add_case(ranks=f_ranks, answer=Node(service, fault))
         eval_data["service-fault"].append(f"{service}_{fault}")
         eval_data["top_1_service"].append(s_evaluator.accuracy(1))
         eval_data["top_3_service"].append(s_evaluator.accuracy(3))
@@ -383,31 +380,28 @@ for service in services:
 
 
 print("--- Evaluation results ---")
-if is_synthetic:
-    print("Avg@5:", round(f_evaluator_all.average(5), 2))
-else: # for real datasets
-    for name, s_evaluator, f_evaluator in [
-        ("cpu", s_evaluator_cpu, f_evaluator_cpu),
-        ("mem", s_evaluator_mem, f_evaluator_mem),
-        ("io", s_evaluator_io, f_evaluator_io),
-        ("delay", s_evaluator_lat, f_evaluator_lat),
-        ("loss", s_evaluator_loss, f_evaluator_loss),
-    ]:
-        eval_data["service-fault"].append(f"overall_{name}")
-        eval_data["top_1_service"].append(s_evaluator.accuracy(1))
-        eval_data["top_3_service"].append(s_evaluator.accuracy(3))
-        eval_data["top_5_service"].append(s_evaluator.accuracy(5))
-        eval_data["avg@5_service"].append(s_evaluator.average(5))
-        eval_data["top_1_metric"].append(f_evaluator.accuracy(1))
-        eval_data["top_3_metric"].append(f_evaluator.accuracy(3))
-        eval_data["top_5_metric"].append(f_evaluator.accuracy(5))
-        eval_data["avg@5_metric"].append(f_evaluator.average(5))
+for name, s_evaluator, f_evaluator in [
+    ("cpu", s_evaluator_cpu, f_evaluator_cpu),
+    ("mem", s_evaluator_mem, f_evaluator_mem),
+    ("io", s_evaluator_io, f_evaluator_io),
+    ("delay", s_evaluator_lat, f_evaluator_lat),
+    ("loss", s_evaluator_loss, f_evaluator_loss),
+]:
+    eval_data["service-fault"].append(f"overall_{name}")
+    eval_data["top_1_service"].append(s_evaluator.accuracy(1))
+    eval_data["top_3_service"].append(s_evaluator.accuracy(3))
+    eval_data["top_5_service"].append(s_evaluator.accuracy(5))
+    eval_data["avg@5_service"].append(s_evaluator.average(5))
+    eval_data["top_1_metric"].append(f_evaluator.accuracy(1))
+    eval_data["top_3_metric"].append(f_evaluator.accuracy(3))
+    eval_data["top_5_metric"].append(f_evaluator.accuracy(5))
+    eval_data["avg@5_metric"].append(f_evaluator.average(5))
 
-        if name == "io":
-            name = "disk"
+    if name == "io":
+        name = "disk"
 
-        if s_evaluator.average(5) is not None:
-            print( f"Avg@5-{name.upper()}:".ljust(12), round(s_evaluator.average(5), 2))
+    if s_evaluator.average(5) is not None:
+        print( f"Avg@5-{name.upper()}:".ljust(12), round(s_evaluator.average(5), 2))
 
 
 print("---")
