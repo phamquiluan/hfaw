@@ -29,4 +29,4 @@ jobs:
         python -m pip install .[default]
 
     - name: Reproduce BARO performance on the Online Boutique dataset 
-      run: python main.py --method baro --dataset online-boutique
+      run: python main-ase.py --method baro --dataset online-boutique

@@ -30,8 +30,7 @@ jobs:
           no_output_timeout: 3h
       - run: 
           name: "Reproduce BARO performance on the RE2 dataset, Train Ticket system"
-          command: python main-re2.py --method baro --dataset re2-tt
-          #command: python main.py --method baro --dataset online-boutique
+          command: python main.py --method baro --dataset re2-tt
 
 workflows:
   main-flow:
