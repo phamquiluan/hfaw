@@ -178,12 +178,10 @@ RCAEval stores all the RCA methods in the `e2e` module (implemented in `RCAEval.
 
 ## Reproducibility
 
-### For Benchmark paper
-
-We provide a script named `main-re2.py` to assist in reproducing the results from [our benchmark paper](https://arxiv.org/pdf/2412.17015). This script can be executed using Python with the following syntax: 
+We provide a script named `main.py` to assist in reproducing the results from [our RCAEval paper](https://arxiv.org/pdf/2412.17015). This script can be executed using Python with the following syntax: 
 
 ```
-python main-re2.py [-h] [--dataset DATASET] [--method METHOD]
+python main.py [-h] [--dataset DATASET] [--method METHOD]
 ```
 
 The available options and their descriptions are as follows:
@@ -192,21 +190,20 @@ The available options and their descriptions are as follows:
 options:
   -h, --help            Show this help message and exit
   --dataset DATASET     Choose a dataset. Valid options:
-                        [online-boutique, sock-shop-1, sock-shop-2, train-ticket,
-                         circa10, circa50, rcd10, rcd50, causil10, causil50]
+                        [re2-ob, re2-ss, re2-tt, etc.]
   --method METHOD       Choose a method (`causalrca`, `microcause`, `e_diagnosis`, `baro`, `rcd`, `circa`, etc.)
 ```
 
 For example, in Table 6, BARO achieves Avg@5 of 0.72, 0.99, 1, 0.83, 0.64, and 0.8 for CPU, MEM, DISK, SOCKET, DELAY, LOSS, and AVERAGE on the Train Ticket dataset. To reproduce these results, you can run the following commands:
 
 ```bash
-python  main-re2.py --method baro --dataset re2-tt
+python  main.py --method baro --dataset re2-tt
 ```
 
 The expected output should be exactly as presented in the paper (it takes less than 1 minute to run the code)
 
 ```
-$ python  main-re2.py --method baro --dataset re2-tt --length 20
+$ python  main.py --method baro --dataset re2-tt --length 20
 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 90/90 [00:45<00:00,  1.98it/s]
 --- Evaluation results ---
 Avg@5-CPU:   0.72

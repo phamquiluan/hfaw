@@ -86,7 +86,7 @@ def parse_args():
         "online-boutique", "sock-shop-1", "sock-shop-2", "train-ticket",
         "re1-ob", "re1-ss", "re1-tt", "re2-ob", "re2-ss", "re2-tt", "re3-ob", "re3-ss", "re3-tt"
     ])
-    parser.add_argument("--length", type=int, default=20, help="Time series length (RQ4)")
+    parser.add_argument("--length", type=int, default=None, help="Time series length (RQ4)")
     parser.add_argument("--tdelta", type=int, default=0, help="Specify $t_delta$ to simulate delay in anomaly detection")
     parser.add_argument("--test", action="store_true", help="Perform smoke test on certain methods without fully run on all data")
     args = parser.parse_args()
@@ -135,17 +135,13 @@ dataset = DATASET_MAP[args.dataset]
 
 # prepare input paths
 data_paths = list(glob.glob(os.path.join(dataset, "**/data.csv"), recursive=True))
-if not data_paths: 
-    data_paths = list(glob.glob(os.path.join(dataset, "**/simple_metrics.csv"), recursive=True))
-# new_data_paths = []
-# for p in data_paths: 
-#     if os.path.exists(p.replace("data.csv", "simple_data.csv")):
-#         new_data_paths.append(p.replace("data.csv", "simple_data.csv"))
-#     elif os.path.exists(p.replace("data.csv", "simple_metrics.csv")):
-#         new_data_paths.append(p.replace("data.csv", "simple_metrics.csv"))
-#     else:
-#         new_data_paths.append(p)
-# data_paths = new_data_paths
+new_data_paths = []
+for p in data_paths: 
+    if os.path.exists(p.replace("data.csv", "simple_data.csv")):
+        new_data_paths.append(p.replace("data.csv", "simple_data.csv"))
+    else:
+        new_data_paths.append(p)
+data_paths = new_data_paths
 if args.test is True:
     data_paths = data_paths[:2]
 
@@ -157,6 +153,8 @@ output_path = "output"
 report_path = join(output_path, f"report.xlsx")
 result_path = join(output_path, "results")
 os.makedirs(result_path, exist_ok=True)
+
+
 
 
 def process(data_path):
@@ -178,15 +176,24 @@ def process(data_path):
 
     # == Load and Preprocess data ==
     data = pd.read_csv(data_path)
-    
-    # remove lat-50, only selecte lat-90 
-    data = data.loc[:, ~data.columns.str.endswith("_latency-50")]
-    
-    if "mm-tt" in data_path:
+    if "time.1" in data:
+        data = data.drop(columns=["time.1"])
+
+    if "rca_" in data_path:
+        data.columns = ["SIM_" + c for c in data.columns]
+
+    if "time" not in data:
+        data["time"] = data.index
+
+    if "sock-shop" in data_path:
+        data = data.loc[:, ~data.columns.str.endswith("_lat_50")]
+        data = data.loc[:, ~data.columns.str.endswith("_lat_99")]
+
+    if "train-ticket" in data_path:
         time_col = data["time"]
         data = data.loc[:, data.columns.str.startswith("ts-")]
         data["time"] = time_col
-        
+
     # handle inf
     data = data.replace([np.inf, -np.inf], np.nan)
 
@@ -194,29 +201,20 @@ def process(data_path):
     data = data.fillna(method="ffill")
     data = data.fillna(0)
 
+    cut_length = 0
+
     with open(join(data_dir, "inject_time.txt")) as f:
         inject_time = int(f.readlines()[0].strip()) + args.tdelta
-    # for metrics, minutes -> seconds // 2
-    normal_df = data[data["time"] < inject_time].tail(args.length * 60 // 2)
-    anomal_df = data[data["time"] >= inject_time].head(args.length * 60 // 2)
-
+    normal_df = data[data["time"] < inject_time].tail(data_length)
+    anomal_df = data[data["time"] >= inject_time].head(data_length)
+    cut_length = min(normal_df.time) - min(data.time)
     data = pd.concat([normal_df, anomal_df], ignore_index=True)
 
     # num column, exclude time
     num_node = len(data.columns) - 1
 
-    # rename latency
-    data = data.rename(
-        columns={
-            c: c.replace("_latency-90", "_latency")
-            for c in data.columns
-            if c.endswith("_latency-90")
-        }
-    )
-    
-    # == Get SLI ===
-    sli = None
-    if "my-sock-shop" in data_path or "fse-ss" in data_path:
+    # select sli for certain methods
+    if "my-sock-shop" in data_path:
         sli = "front-end_cpu"
         if f"{service}_latency" in data:
             sli = f"{service}_latency"
@@ -224,18 +222,14 @@ def process(data_path):
         sli = "front-end_cpu"
         if f"{service}_lat_90" in data:
             sli = f"{service}_lat_90"
-    elif "train-ticket" in data_path or "fse-tt" in data_path or "RE2-TT" in data_path:
-        sli = "ts-ui-dashboard_latency"
+    elif "train-ticket" in data_path:
+        sli = "ts-ui-dashboard_latency-90"
         if f"{service}_latency" in data:
             sli = f"{service}_latency"
-    elif "online-boutique" in data_path or "fse-ob" in data_path or "RE2-OB" in data_path or "RE2-SS" in data_path:
-        sli = "frontend_latency"
+    elif "online-boutique" in data_path:
+        sli = "frontend_latency-90"
         if f"{service}_latency" in data:
             sli = f"{service}_latency"
-        elif "frontend_1" in data:
-            sli = "frontend_1"
-    else:
-        raise ValueError("SLI not implemented")
 
     # == PROCESS ==
     func = globals()[args.method]
@@ -255,9 +249,6 @@ def process(data_path):
             args=run_args,
         )
         root_causes = out.get("ranks")
-        # print("==============")
-        # print(f"{data_path=}")
-        # print(root_causes[:5])
         dump_json(filename=rp, data={0: root_causes})
     except Exception as e:
         raise e
@@ -307,8 +298,6 @@ s_evaluator_loss = Evaluator()
 f_evaluator_loss = Evaluator()
 s_evaluator_io = Evaluator()
 f_evaluator_io = Evaluator()
-s_evaluator_socket = Evaluator()
-f_evaluator_socket = Evaluator()
 
 for service in services:
     for fault in faults:
@@ -374,17 +363,10 @@ for service in services:
 
                 elif fault == "disk":
                     s_evaluator_io.add_case(ranks=s_ranks, answer=Node(service, "unknown"))
-                    f_evaluator_io.add_case(ranks=f_ranks, answer=Node(service, "diskio"))
+                    f_evaluator_io.add_case(ranks=f_ranks, answer=Node(service, "latency"))
 
                     s_evaluator_all.add_case(ranks=s_ranks, answer=Node(service, "unknown"))
-                    f_evaluator_all.add_case(ranks=f_ranks, answer=Node(service, "diskio"))
-                elif fault == "socket":
-                    s_evaluator_socket.add_case(ranks=s_ranks, answer=Node(service, "unknown"))
-                    f_evaluator_socket.add_case(ranks=f_ranks, answer=Node(service, "socket"))
-
-                    s_evaluator_all.add_case(ranks=s_ranks, answer=Node(service, "unknown"))
-                    f_evaluator_all.add_case(ranks=f_ranks, answer=Node(service, "socket"))
-
+                    f_evaluator_all.add_case(ranks=f_ranks, answer=Node(service, "latency"))
 
         eval_data["service-fault"].append(f"{service}_{fault}")
         eval_data["top_1_service"].append(s_evaluator.accuracy(1))
@@ -402,7 +384,6 @@ for name, s_evaluator, f_evaluator in [
     ("cpu", s_evaluator_cpu, f_evaluator_cpu),
     ("mem", s_evaluator_mem, f_evaluator_mem),
     ("io", s_evaluator_io, f_evaluator_io),
-    ("socket", s_evaluator_socket, f_evaluator_socket),
     ("delay", s_evaluator_lat, f_evaluator_lat),
     ("loss", s_evaluator_loss, f_evaluator_loss),
 ]:
