@@ -288,7 +288,7 @@ We can replace the baro method with other methods (e.g., nsigma, fci_randomwalk)
 
 ## Creating New RCA Datasets or Methods
 
-For detailed guidance, refer to [./EXTENDING.md](./EXTENDING.md).
+For detailed guidance, refer to [EXTENDING.md](EXTENDING.md).
 
 ## Licensing
 
