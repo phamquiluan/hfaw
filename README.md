@@ -36,7 +36,7 @@ We recommend using machines equipped with at least 8 cores, 16GB RAM, and ~50GB 
 
 ## Installation
 
-The `default` environment, which is used for most methods, can be easily installed as follows. Detailed installation instructions for all methods are in [SETUP.md](SETUP.md).
+The `default` environment, which is used for most methods, can be easily installed as follows. Detailed installation instructions for all methods are in [SETUP.md](docs/SETUP.md).
 
 
 Open your terminal and run the following commands
@@ -54,7 +54,7 @@ Clone RCAEval from GitHub
 git clone https://github.com/phamquiluan/RCAEval.git && cd RCAEval
 ```
 
-Create virtual environment with Python 3.10 (refer [SETUP.md](SETUP.md) to see how to install Python3.10 on Linux)
+Create virtual environment with Python 3.10 (refer [SETUP.md](docs/SETUP.md) to see how to install Python3.10 on Linux)
 
 ```bash
 python3.10 -m venv env
@@ -289,7 +289,7 @@ We can replace the baro method with other methods (e.g., nsigma, fci_randomwalk)
 
 ## Creating New RCA Datasets or Methods
 
-For detailed guidance, refer to [EXTENDING.md](EXTENDING.md).
+For detailed guidance, refer to [EXTENDING.md](docs/EXTENDING.md).
 
 ## Licensing
 
