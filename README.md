@@ -6,7 +6,7 @@
 [![Build and test](https://github.com/phamquiluan/RCAEval/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/phamquiluan/RCAEval/actions/workflows/build-and-test.yml)
 [![Upload Python Package](https://github.com/phamquiluan/RCAEval/actions/workflows/python-publish.yml/badge.svg)](https://github.com/phamquiluan/RCAEval/actions/workflows/python-publish.yml)
 
-RCAEval is an open-source benchmark that provides three comprehensive datasets (RE1, RE2, and RE3) and an evaluation framework for RCA in microservice systems. Our evaluation framework features 15 reproducible baselines covering a variety of state-of-the-art RCA methods from metric-based, trace-based, to multi-source RCA methods.
+RCAEval is an open-source benchmark that offers three datasets (RE1, RE2, RE3) and an evaluation framework for root cause analysis (RCA) in microservice systems. It includes 15 reproducible baselines covering metric-based, trace-based, and multi-source RCA methods.
 
 <p align="center">
 <img width=1000 src= "./docs/readme.jpg"/>
@@ -181,7 +181,7 @@ RCAEval stores all the RCA methods in the `e2e` module (implemented in `RCAEval.
 
 ## Reproducibility
 
-### For RCAEval Benchmark Paper
+### RCAEval Benchmark Paper
 
 We provide a script named `main.py` to assist in reproducing the results from [our RCAEval paper](https://arxiv.org/pdf/2412.17015). This script can be executed using Python with the following syntax: 
 
@@ -288,7 +288,7 @@ We can replace the baro method with other methods (e.g., nsigma, fci_randomwalk)
 
 ## Creating New RCA Datasets or Methods
 
-Please refer to [./EXTENDING.md](./EXTENDING.md) for detailed documentation on this matter.
+For detailed guidance, refer to [./EXTENDING.md](./EXTENDING.md).
 
 ## Licensing
 
