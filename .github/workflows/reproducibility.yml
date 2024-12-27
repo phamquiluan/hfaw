@@ -31,4 +31,5 @@ jobs:
     - name: Reproduce BARO performance on the Online Boutique dataset 
       run: python main.py --method baro --dataset online-boutique
 
-
+    - name: Reproduce BARO performance on the RE2 dataset, Train Ticket system 
+      run: python main-re2.py --method baro --dataset re2-tt
