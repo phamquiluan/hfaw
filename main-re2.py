@@ -86,7 +86,7 @@ def parse_args():
         "online-boutique", "sock-shop-1", "sock-shop-2", "train-ticket",
         "re1-ob", "re1-ss", "re1-tt", "re2-ob", "re2-ss", "re2-tt", "re3-ob", "re3-ss", "re3-tt"
     ])
-    parser.add_argument("--length", type=int, default=None, help="Time series length (RQ4)")
+    parser.add_argument("--length", type=int, default=20, help="Time series length (RQ4)")
     parser.add_argument("--tdelta", type=int, default=0, help="Specify $t_delta$ to simulate delay in anomaly detection")
     parser.add_argument("--test", action="store_true", help="Perform smoke test on certain methods without fully run on all data")
     args = parser.parse_args()
