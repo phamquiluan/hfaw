@@ -13,7 +13,7 @@ import tempfile
 
 
 def test_rcd():
-    command = ["python", "main.py", "--method", "rcd", "--dataset", "online-boutique", "--test"]
+    command = ["python", "main-ase.py", "--method", "rcd", "--dataset", "online-boutique", "--test"]
     result = subprocess.run(command, capture_output=True, text=True)
 
     # Check if the script ran successfully
