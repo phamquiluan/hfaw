@@ -178,6 +178,52 @@ RCAEval stores all the RCA methods in the `e2e` module (implemented in `RCAEval.
 
 ## Reproducibility
 
+### For Benchmark paper
+
+We provide a script named `main-re2.py` to assist in reproducing the results from [our benchmark paper](https://arxiv.org/pdf/2412.17015). This script can be executed using Python with the following syntax: 
+
+```
+python main-re2.py [-h] [--dataset DATASET] [--method METHOD]
+```
+
+The available options and their descriptions are as follows:
+
+```
+options:
+  -h, --help            Show this help message and exit
+  --dataset DATASET     Choose a dataset. Valid options:
+                        [online-boutique, sock-shop-1, sock-shop-2, train-ticket,
+                         circa10, circa50, rcd10, rcd50, causil10, causil50]
+  --method METHOD       Choose a method (`causalrca`, `microcause`, `e_diagnosis`, `baro`, `rcd`, `circa`, etc.)
+```
+
+For example, in Table 6, BARO achieves Avg@5 of 0.72, 0.99, 1, 0.83, 0.64, and 0.8 for CPU, MEM, DISK, SOCKET, DELAY, LOSS, and AVERAGE on the Train Ticket dataset. To reproduce these results, you can run the following commands:
+
+```bash
+python  main-re2.py --method baro --dataset re2-tt
+```
+
+The expected output should be exactly as presented in the paper (it takes less than 1 minute to run the code)
+
+```
+$ python  main-re2.py --method baro --dataset re2-tt --length 20
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 90/90 [00:45<00:00,  1.98it/s]
+--- Evaluation results ---
+Avg@5-CPU:   0.72
+Avg@5-MEM:   0.99
+Avg@5-DISK:  1.0
+Avg@5-SOCKET: 0.83
+Avg@5-DELAY: 0.63
+Avg@5-LOSS:  0.64
+---
+Avg speed: 0.51
+```
+
+We can replace the baro method with other methods (e.g., circa) and substitute re2-tt with other datasets to replicate the corresponding results shown in Table 6. This reproduction process is also integrated into our Continuous Integration (CI) setup. For more details, refer to the [.github/workflows/reproducibility.yml](.github/workflows/reproducibility.yml) file.
+
+
+
+### For ASE Paper
 We provide a script named `main.py` to assist in reproducing the results from [our ASE paper](https://dl.acm.org/doi/abs/10.1145/3691620.3695065). This script can be executed using Python with the following syntax: 
 
 ```
