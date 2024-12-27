@@ -286,6 +286,9 @@ Avg speed: 0.07
 
 We can replace the baro method with other methods (e.g., nsigma, fci_randomwalk) and substitute online-boutique with other datasets to replicate the corresponding results shown in Table 5. This reproduction process is also integrated into our Continuous Integration (CI) setup. For more details, refer to the [.github/workflows/reproducibility.yml](.github/workflows/reproducibility.yml) file.
 
+## Creating New RCA Datasets or Methods
+
+Please refer to [./EXTENDING.md](./EXTENDING.md) for detailed documentation on this matter.
 
 ## Licensing
 
