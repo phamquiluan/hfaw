@@ -1,4 +1,4 @@
-name: Reproduce BARO performance on the Online Boutique dataset  
+name: Reproduce BARO performance
 
 on:
   push:
