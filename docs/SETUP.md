@@ -9,7 +9,6 @@ We assume the users are on Ubuntu machine and ready to have Python 3.10 installe
   * [Install RCAEval](#install-rcaeval)
     + [Install RCAEval in DEFAULT mode](#install-rcaeval-in-default-mode)
     + [Install RCAEval in RCD mode](#install-rcaeval-in-rcd-mode)
-    + [Install RCAEval in FGES mode](#install-rcaeval-in-fges-mode)
   * [Basic usage example](#basic-usage-example)
 
 
@@ -37,7 +36,7 @@ git clone https://github.com/phamquiluan/RCAEval.git && cd RCAEval
 
 ## Install RCAEval
 
-We maintain three difference modes: `default`, `rcd`, `fges` for RCAEval due to the dependency constraints. Specifically, most methods use the `default` mode. RCD method uses the `rcd` mode. The fGES-based methods uses the `fges` mode. We can easily install RCAEval in different modes as follows.
+We maintain two difference modes: `default`, `rcd` for RCAEval due to the dependency constraints. Specifically, most methods use the `default` mode. RCD method uses the `rcd` mode. We can easily install RCAEval in different modes as follows.
 
 
 ### Install RCAEval in DEFAULT mode
@@ -133,56 +132,3 @@ Avg@5-LOSS:  0.51
 Avg speed: 16.2
 ```
 </details>
-
-### Install RCAEval in fGES mode
-
-**Run the following commands**
-
-```bash
-python3.8 -m venv env-fges
-. env-fges/bin/activate
-
-pip install pip==20.0.2
-pip install -e .[fges]
-
-cd LIB
-pip install -e .
-cd ..
-
-# it MUST be performed in this order
-sudo apt-get install -y gcc graphviz libgraphviz-dev pkg-config
-pip install dill pygobnilp
-pip install -U numba
-SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True pip install category_encoders sortedcontainers fcit
-pip install pgmpy
-pip install feature_engine
-```
-
-**Test the installation**
-
-Users can perform testing using the following commands:
-
-```bash
-python main.py --method fges_randomwalk --dataset online-boutique --test
-```
-
-<details>
-<summary>The expected output would look like this</summary>
-
-```bash
-$ python main.py --method fges_randomwalk --dataset online-boutique --test
-100%|███████████████████████████████████████████████| 2/2 [01:04<00:00, 32.33s/it]
---- Evaluation results ---
-Avg@5-CPU:   0.94
-Avg@5-MEM:   0.67
-Avg@5-DISK:  0.7
-Avg@5-DELAY: 0.25
-Avg@5-LOSS:  0.51
----
-Avg speed: 32.33
-```
-</details>
-
-## Basic usage example
-
-Users can check the basic usage example of RCAEval in the [README.md#basic-usage-example](README.md#how-to-use) section.

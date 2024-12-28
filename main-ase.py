@@ -67,11 +67,6 @@ else:
     from RCAEval.e2e import dummy, e_diagnosis, ht, rcd, mmrcd
 
 try:
-    from RCAEval.e2e.ges_pagerank import fges_pagerank, fges_randomwalk
-except ImportError:
-    print("fges_pagerank not available")
-
-try:
     import torch
     os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
     from RCAEval.e2e.causalrca import causalrca

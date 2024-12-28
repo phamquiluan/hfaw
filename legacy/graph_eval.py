@@ -42,8 +42,6 @@ if is_py310():
     except Exception as e:
         print(e)
     
-else:
-    from RCAEval.graph_construction.fges import fges
 
 AVAILABLE_METHODS = sorted(
     [
@@ -51,7 +49,6 @@ AVAILABLE_METHODS = sorted(
         "ppc",
         "pcmci",
         "fci",
-        "fges",
         "notears",
         "ntlr",
         "DirectLiNGAM",
@@ -557,33 +554,6 @@ def process(data_path):
                     show_progress=False,
                     verbose=False,
                 )[0].graph
-
-        elif args.model == "fges":
-            if args.tuning is True:  # tunig mode
-                train_data = np_data[: int(np_data.shape[0] * 0.7), :]
-                eval_data = np_data[int(np_data.shape[0] * 0.7) :, :]
-                best_bic = np.inf
-                best_config = None
-
-                for score_func in ["linear", "p2", "p3"]:
-                    print(f"{score_func=}")
-                    adj = fges(pd.DataFrame(np_data), score_func=score_func)
-                    G = adj2generalgraph(adj)
-
-                    bic = score_g(eval_data, G)
-                    if bic < best_bic:
-                        best_bic = bic
-                        best_config = score_func
-                        print(f"{graph_idx}_{case_idx}: {best_bic=}, {best_config=}")
-
-                # write down best param
-                with open(join(result_path, f"{graph_idx}_{case_idx}_best_config.txt"), "w") as f:
-                    f.write(f"{best_config=}")
-
-                adj = fges(pd.DataFrame(np_data), score_func=best_config)
-
-            else:
-                adj = fges(pd.DataFrame(np_data))
 
         elif args.model == "ICALiNGAM":
             if args.tuning is True:  # tuning mode

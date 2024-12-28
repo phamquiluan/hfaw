@@ -50,16 +50,12 @@ if is_py310():
     except Exception as e:
         print(e)
     
-else:
-    from RCAEval.graph_construction.fges import fges
-
 AVAILABLE_METHODS = sorted(
     [
         "pc",
         "ppc",
         "pcmci",
         "fci",
-        "fges",
         "notears",
         "ntlr",
         "DirectLiNGAM",
@@ -248,8 +244,6 @@ def process(data_path):
                 show_progress=False,
                 verbose=False,
             )[0].graph
-        elif args.method == "fges":
-            adj = fges(pd.DataFrame(np_data))
         elif args.method == "ICALiNGAM":
             model = ICALiNGAM()
             model.fit(np_data)
