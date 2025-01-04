@@ -148,8 +148,8 @@ RCAEval benchmark includes three datasets: RE1, RE2, and RE3, designed to compre
 |   RE3       |   3        |   5 Code-level           |   90     |   68-322   |   1.7-2.7          |   4.5-4.7            |
 
 Our datasets and their description are publicly available in Zenodo repository with the following information:
-- Dataset DOI: https://doi.org/10.5281/zenodo.14504481
-- Dataset URL: [https://zenodo.org/records/13305663](https://zenodo.org/records/14504481)
+- Dataset DOI: https://doi.org/10.5281/zenodo.14590730
+- Dataset URL: [https://zenodo.org/records/14590730](https://zenodo.org/records/14590730)
 
 We also provide utility functions to download our datasets using Python. The downloaded datasets will be available at directory `data`.
 
