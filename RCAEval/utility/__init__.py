@@ -222,6 +222,34 @@ def download_re1_dataset(local_path=None):
     download_re1ob_dataset(local_path=RE1_local_path)
     download_re1ss_dataset(local_path=RE1_local_path)
     download_re1tt_dataset(local_path=RE1_local_path)
+
+
+def download_re2ob_dataset(local_path=None):
+    """Download the RE2 dataset, Online Boutique system from Zenodo."""
+    if local_path == None:
+        local_path = join("data", "RE2")
+    if not os.path.exists(local_path):
+        os.makedirs(local_path)
+    if os.path.exists(join(local_path, "RE2-OB")):
+        return
+    download_data("https://zenodo.org/records/14590730/files/RE2-OB.zip?download=1", "RE2-OB.zip")
+    with zipfile.ZipFile("RE2-OB.zip", 'r') as file:
+        file.extractall(local_path)
+    os.remove("RE2-OB.zip")    
+
+
+def download_re2ss_dataset(local_path=None):
+    """Download the RE2 dataset, Sock Shop system from Zenodo."""
+    if local_path == None:
+        local_path = join("data", "RE2")
+    if not os.path.exists(local_path):
+        os.makedirs(local_path)
+    if os.path.exists(join(local_path, "RE2-SS")):
+        return
+    download_data("https://zenodo.org/records/14590730/files/RE2-SS.zip?download=1", "RE2-SS.zip")
+    with zipfile.ZipFile("RE2-SS.zip", 'r') as file:
+        file.extractall(local_path)
+    os.remove("RE2-SS.zip")    
     
 
 def download_re2_dataset(local_path=None):
