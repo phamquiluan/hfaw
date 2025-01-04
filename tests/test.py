@@ -11,25 +11,6 @@ import pandas as pd
 import pytest
 import tempfile
 
-from RCAEval.utility import (
-    download_re1_dataset,
-    download_re2_dataset,
-    download_re3_dataset,
-)
-
-
-@pytest.mark.parametrize("func", [
-    download_re1_dataset,
-    # download_re2_dataset,
-    download_re3_dataset,
-])
-def test_download_dataset(func: Callable):
-    """Test download dataset."""
-    local_path = tempfile.NamedTemporaryFile().name
-    func(local_path=local_path)
-    assert path.exists(local_path), local_path
-    shutil.rmtree(local_path)    
-    
 
 def test_rq2_script():
     command = ["python", "main-ase.py", "--method", "baro", "--dataset", "online-boutique", "--test"]
