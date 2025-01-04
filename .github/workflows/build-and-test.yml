@@ -8,7 +8,6 @@ on:
 
 jobs:
   build-and-test-default:
-
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
@@ -28,12 +27,32 @@ jobs:
         python -m pip install pip==20.0.2
         python -m pip install .[default]
 
-    - name: Test download dataset
-      run: python -m pytest tests/test_datasets.py
-
     - name: Test
       run: python -m pytest tests/test.py
 
+
+  test-download-datasets:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        python-version: ["3.10"]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        sudo apt update -y
+        sudo apt install -y build-essential libxml2 libxml2-dev zlib1g-dev python3-tk graphviz
+        python -m pip install pip==20.0.2
+        python -m pip install .[default]
+
+    - name: Test
+      run: python -m pytest tests/test_datasets.py
 
   build-and-test-rcd:
 
