@@ -2,9 +2,9 @@ name: Build and test
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "dev"]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "dev"]
 
 jobs:
   build-and-test-default:
@@ -30,7 +30,7 @@ jobs:
 
     - name: Test download dataset
       run: python -m pytest tests/test_datasets.py
-      
+
     - name: Test
       run: python -m pytest tests/test.py
 
