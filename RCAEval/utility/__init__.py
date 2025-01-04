@@ -252,6 +252,20 @@ def download_re2ss_dataset(local_path=None):
     os.remove("RE2-SS.zip")    
     
 
+def download_re2tt_dataset(local_path=None):
+    """Download the RE2 dataset, Train Ticket system from Zenodo."""
+    if local_path == None:
+        local_path = join("data", "RE2")
+    if not os.path.exists(local_path):
+        os.makedirs(local_path)
+    if os.path.exists(join(local_path, "RE2-TT")):
+        return
+    download_data("https://zenodo.org/records/14590730/files/RE2-TT.zip?download=1", "RE2-TT.zip")
+    with zipfile.ZipFile("RE2-TT.zip", 'r') as file:
+        file.extractall(local_path)
+    os.remove("RE2-TT.zip")    
+    
+
 def download_re2_dataset(local_path=None):
     """Download the RE2 dataset from Zenodo."""
     if local_path == None:
