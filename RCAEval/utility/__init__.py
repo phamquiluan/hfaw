@@ -166,6 +166,19 @@ def download_train_ticket_dataset(local_path=None):
     os.remove("train-ticket.zip")
     
 
+def download_re1ob_dataset(local_path=None):
+    """Download the RE1 dataset, Online Boutique system from Zenodo."""
+    if local_path == None:
+        local_path = join("data", "RE1")
+    if not os.path.exists(local_path):
+        os.makedirs(local_path)
+    if os.path.exists(join(local_path, "RE1-OB")):
+        return
+    download_data("https://zenodo.org/records/14590730/files/RE1-OB.zip?download=1", "RE1-OB.zip")
+    with zipfile.ZipFile("RE1-OB.zip", 'r') as file:
+        file.extractall(local_path)
+    os.remove("RE1-OB.zip")
+
 def download_re1_dataset(local_path=None):
     """Download the RE1 dataset from Zenodo."""
     if local_path == None:
