@@ -272,12 +272,15 @@ def download_re2_dataset(local_path=None):
         local_path = "data"
     if not os.path.exists(local_path):
         os.makedirs(local_path)
-    if os.path.exists(join(local_path, "RE2")):
+    
+    RE2_local_path = join(local_path, "RE2")
+    if os.path.exists(RE2_local_path):
         return
-    download_data("https://zenodo.org/records/14504481/files/RE2.zip?download=1", "RE2.zip")
-    with zipfile.ZipFile("RE2.zip", 'r') as file:
-        file.extractall(local_path)
-    os.remove("RE2.zip")
+    
+    download_re2ob_dataset(local_path=RE2_local_path)
+    download_re2ss_dataset(local_path=RE2_local_path)
+    download_re2tt_dataset(local_path=RE2_local_path)
+        
 
 def download_re3_dataset(local_path=None):
     """Download the RE3 dataset from Zenodo."""
