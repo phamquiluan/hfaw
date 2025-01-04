@@ -179,6 +179,21 @@ def download_re1ob_dataset(local_path=None):
         file.extractall(local_path)
     os.remove("RE1-OB.zip")
 
+
+def download_re1ss_dataset(local_path=None):
+    """Download the RE1 dataset, Sock Shop system from Zenodo."""
+    if local_path == None:
+        local_path = join("data", "RE1")
+    if not os.path.exists(local_path):
+        os.makedirs(local_path)
+    if os.path.exists(join(local_path, "RE1-SS")):
+        return
+    download_data("https://zenodo.org/records/14590730/files/RE1-SS.zip?download=1", "RE1-SS.zip")
+    with zipfile.ZipFile("RE1-SS.zip", 'r') as file:
+        file.extractall(local_path)
+    os.remove("RE1-SS.zip")
+    
+
 def download_re1_dataset(local_path=None):
     """Download the RE1 dataset from Zenodo."""
     if local_path == None:
