@@ -110,14 +110,6 @@ def download_multi_source_sample(local_path=None):
     os.remove("multi-source-data.zip")
 
 
-def download_multisource_sample():
-    # TODO
-    metrics = None
-    logs = None 
-    traces = None 
-    return metrics, logs, traces
-
-
 def download_online_boutique_dataset(local_path=None):
     """Download the Online Boutique dataset from Zenodo."""
     if local_path == None:
