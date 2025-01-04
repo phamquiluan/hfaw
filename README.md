@@ -134,7 +134,9 @@ Downloading data.csv..: 100%|█████████████████
 Top 5 root causes: ['emailservice_mem', 'recommendationservice_mem', 'cartservice_mem', 'checkoutservice_latency', 'cartservice_latency']
 ```
 
-A tutorial of using Multi-source BARO to diagnose failure using multi-source telemetry data (metrics, logs, and traces) is presented in [docs/multi-source-rca-demo.ipynb](docs/multi-source-rca-demo.ipynb).
+A tutorial of using Multi-source BARO to diagnose failure using multi-source telemetry data (metrics, logs, and traces) is presented in [docs/multi-source-rca-demo.ipynb](docs/multi-source-rca-demo.ipynb). 
+
+A tutorial of using BARO to diagnose code-level faults is presented in [docs/code-level-rca.ipynb](docs/code-level-rca.ipynb).
 
 
 ## Available Datasets
