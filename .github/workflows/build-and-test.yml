@@ -28,6 +28,9 @@ jobs:
         python -m pip install pip==20.0.2
         python -m pip install .[default]
 
+    - name: Test download dataset
+      run: python -m pytest tests/test_datasets.py
+      
     - name: Test
       run: python -m pytest tests/test.py
 
