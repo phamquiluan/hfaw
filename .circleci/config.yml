@@ -32,10 +32,30 @@ jobs:
           name: "Reproduce BARO performance on the RE2 dataset, Train Ticket system"
           command: python main.py --method baro --dataset re2-tt
 
+  test-download-datasets:
+    executor: my-executor
+    steps:
+      - checkout
+      - run: 
+          name: "Install packages"
+          command: | 
+              sudo apt update -y 
+              sudo apt install -y build-essential libxml2 libxml2-dev zlib1g-dev python3-tk graphviz
+      - run:
+          name: "Build "
+          command: |
+              pip install pip==20.0.2
+              pip install -e .[default]
+      - run:
+          name: "Run test"
+          command: pytest tests/test_datasets.py
+          no_output_timeout: 3h
+
 workflows:
   main-flow:
     jobs:
       - build-and-test
+      - test-download-datasets
   daily-build:
     triggers:
       - schedule:
