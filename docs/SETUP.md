@@ -87,6 +87,8 @@ tests/test.py ...........                                                  [100%
 
 ### Install RCAEval in RCD mode
 
+The RCD mode is used to run RCD, HT, and E-Diagnosis methods.
+
 **Create and activate a virtual environment**
 
 ```bash
@@ -106,6 +108,15 @@ pip install -e .[rcd]
 
 #IMPORTANT, run the following command to link the customized PC
 bash script/link.sh
+```
+
+**Install PyRCA for HT and E-Diagnosis**
+
+```
+# for ht
+sudo apt install openjdk-11-jre-headless
+git clone https://github.com/salesforce/PyRCA.git
+cd PyRCA; pip install -e .; cd ..
 ```
 
 **Reproduce RCD**
