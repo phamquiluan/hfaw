@@ -17,6 +17,10 @@ def is_py310():
     return sys.version_info.major == 3 and sys.version_info.minor == 10
 
 
+def is_py38():
+    return sys.version_info.major == 3 and sys.version_info.minor == 8
+
+
 def dump_json(filename: str, data):
     """
     Dump data into a json file
