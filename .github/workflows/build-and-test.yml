@@ -54,6 +54,12 @@ jobs:
         python -m pip install pip==20.0.2
         python -m pip install wheel pytest
         python -m pip install .[rcd]
+
+        # install for ht
+        sudo apt install openjdk-11-jre-headless
+        git clone https://github.com/salesforce/PyRCA.git
+        cd PyRCA; pip install -e .; cd ..
+        
         bash script/link.sh
 
     - name: Test
