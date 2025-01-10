@@ -21,6 +21,7 @@ from RCAEval.classes.graph import Node
 from RCAEval.io.time_series import drop_constant, drop_time, preprocess
 from RCAEval.utility import (
     dump_json,
+    is_py38,
     is_py310,
     load_json,
     download_online_boutique_dataset,
@@ -63,8 +64,11 @@ if is_py310():
         tracerca,
     )
 
-else:
+elif is_py38():
     from RCAEval.e2e import dummy, e_diagnosis, ht, rcd, mmrcd
+else:
+    print("Please use Python 3.8 or 3.10")
+    exit(1)
 
 try:
     import torch
