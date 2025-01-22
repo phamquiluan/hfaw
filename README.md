@@ -326,7 +326,7 @@ We would like to express our sincere gratitude to the researchers and developers
 }
 ```
 
-```
+```bibtex
 @inproceedings{pham2024root,
   title={Root Cause Analysis for Microservice System based on Causal Inference: How Far Are We?},
   author={Pham, Luan and Ha, Huong and Zhang, Hongyu},
