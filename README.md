@@ -317,7 +317,7 @@ We would like to express our sincere gratitude to the researchers and developers
 ## Citation
 
 
-```
+```bibtex
 @inproceedings{pham2025benchmark,
   title={RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems with Telemetry Data},
   author={Pham, Luan and Zhang, Hongyu and Ha, Huong and Salim, Flora and Zhang, Xiuzhen},
